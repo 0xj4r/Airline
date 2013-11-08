@@ -3,8 +3,7 @@ Airline
 
 Airline Reservation System developed in Java.
 
- Airline Reservation System developed in Java. 
- 
+
 Amy Mazzola : Josh Ransom : Mike Rosengrant : Danielle Vanica
 
 
