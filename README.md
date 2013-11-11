@@ -3,8 +3,7 @@ Airline Reservation System developed in Java.
 
 Amy Mazzola : Josh Ransom : Mike Rosengrant : Danielle Vanica
 
-#Web Application
-[SnagaFlight](http://snagaflight-snagaflight.rhcloud.com/index.php)
+#[SnagaFlight](http://snagaflight-snagaflight.rhcloud.com/index.php)
 
 #To Do
 [CLICK HERE!](https://trello.com/b/xbIXXgV3/snagaflight)
