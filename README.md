@@ -18,28 +18,4 @@ The OpenShift `php` cartridge documentation can be found at:
 https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-php/README.md
 
 
-#MySQL Tables: 
-(Test Variables left in table to show format) 
 
-mysql>
-flights: 
-+------------+-------------+-----------+--------------------+-------------+--------------+--------------+------------+-----------------+--------------+---------------+-----------------+------------------------+
-| flight_num | depart_city | depart_st | depart_airport     | depart_time | depart_tzone | arrival_city | arrival_st | arrival_airport | arrival_time | arrival_tzone | flight_duration | flight_seats_available |
-+------------+-------------+-----------+--------------------+-------------+--------------+--------------+------------+-----------------+--------------+---------------+-----------------+------------------------+
-|          1 | Phoenix     | AZ        |                    | 00:00:00    | 00:00:00     |              |            |                 | 00:00:00     | 00:00:00      | 00:00:00        |                      0 |
-|          2 | Scottsdale  | AZ        | Scottsdale Airport | 06:45:00    | 00:00:00     |              |            |                 | 00:00:00     | 00:00:00      | 00:00:00        |                      0 |
-|          3 | Phoenix     | AZ        | Sky Harbor         | 12:00:00    | 07:00:00     | Chicago      | IL         | O'Hare Intl.    | 13:30:00     | 06:00:00      | 02:30:00        |                     14 |
-+------------+-------------+-----------+--------------------+-------------+--------------+--------------+------------+-----------------+--------------+---------------+-----------------+------------------------+
-
-members: 
-+---------+----------------------+----------------------------------+-----------+----------+-------------+
-| user_id | username             | password                         | firstname | lastname | adminRights |
-+---------+----------------------+----------------------------------+-----------+----------+-------------+
-|       1 | josh@snagaflight.com | password                         | Josh      | Ransom   | 1           |
-|       2 | josh@snag.com        | b7d192a44e0da16cd180ebe85efb7c8f | Josh      | Ransom   | 1           |
-|       3 | jj@snag.com          | f94adcc3ddda04a8f34928d862f404b4 | Josh      | Ransom   | 0           |
-|       4 | bgates@snag.com      | 88d2c32b8e12e4cadb0fdbf279a85d8d | bill      | gates    | 0           |
-|       5 | admin                | admin                            | admin     | admin    | 1           |
-|       6 | fg@snag.com          | 26253c50741faa9c2e2b836773c69fe6 | frank     | gibbons  | 0           |
-|       7 | admin@admin          | 21232f297a57a5a743894a0e4a801fc3 | josh      | ransom   | 0           |
-+---------+----------------------+----------------------------------+-----------+----------+-------------+
