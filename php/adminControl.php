@@ -78,28 +78,12 @@ echo "</table>";
 	
 
 	
-	<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
-<head>
-</head>
+
 <body>
-<form id='enterflight' action='adminControl.php' method='post'
-    accept-charset='UTF-8'>
-<fieldset >
-<legend>Enter Flight</legend>
-<input type='hidden' name='submitted' id='submitted' value='1'/>
-<label for='depart_city' >Departure City*: </label>
-<input type='text' name='depart_city' id='depart_city' maxlength="30" />
-<label for='depart_st'>Departure State*: </label>
-<input type = 'text' name = 'depart_st' id='depart_st' maxlength ='30' />
-<label for='depart_airport' >Departure Airport*:</label>
-<input type='text' name='depart_airport' id='depart_airport' maxlength="50" />
-  
-<label for='depart_time' >Departure Time*:</label>
-<input type='text' name='depart_time' id='depart_time' maxlength="255" />
-<input type='submit' name='Submit' value='Enter Flight' />
- 
-</fieldset>
+	<form method ="link" action="updateFlights.php/">
+	<input type="submit" Value="Add a flight"> 
 </form>
 </body>
 </html>
