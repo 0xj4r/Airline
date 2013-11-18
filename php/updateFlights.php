@@ -39,7 +39,6 @@ function Update()
 	<!DOCTYPE HTML>
 <html>
 <head>
-<link style="text/css" rel="stylesheet" href="menu.css"/>
 <link style="text/css" rel="stylesheet" href="updateFlights.css"/>
 </head>
 <body>
