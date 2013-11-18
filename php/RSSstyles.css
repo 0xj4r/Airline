@@ -1,0 +1,90 @@
+.RSSAggrCont {
+    background:rgba(255,255,255,.6);
+    border-radius: 3px;
+	-webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+    width:500px;
+    padding:10px;
+    margin:20px;
+    float:left;
+	position: relative;
+	left: 500px;
+}
+
+.rss_feed_wrapper h1 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px white;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+  background-image: -webkit-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -moz-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -o-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: linear-gradient(to bottom, whiteffd, #eef2f5);
+  -webkit-box-shadow: 0 1px whitesmoke;
+  box-shadow: 0 1px whitesmoke;
+}
+.login p {
+
+/* RSS Feeds */
+.rss_item_wrapper { 
+    padding-bottom: 8px;
+}
+.rss_item_wrapper:last-child {
+    padding-bottom: 0px;
+}
+.rss_item_header {
+    font-size:12px;
+    font-weight:bold;
+    padding-bottom:0px;
+}
+.rss_item_header a,
+.rss_item_header a:link,
+.rss_item_header a:visited,
+.rss_item_header a:hover,
+.rss_item_header a:active {
+    font-size:12px;
+    font-weight:bold;
+    color:#33c;
+}
+.rss_item_info {
+    color:#999;
+    font-size:9px;
+}
+.rss_item_desc {
+    text-align:justify;
+    font-size: 11px;
+}
+.rss_read_more {
+    background-color:#EDEDED;
+    font-size:11px;
+    font-weight:normal;
+    height:30px;
+    line-height:30px;
+    vertical-align: middle;
+    margin-top:2px;
+    padding:0 9px;
+    text-align:left;
+    text-decoration:none;
+    text-transform:capitalize;
+}
+.loading_rss {
+    text-align:center;
+    width:89px;
+    height:64px;
+    background-image:url(../images/loading_bg.png);
+    z-index: 10;
+    margin: 10px auto;
+}
+.loading_rss img {
+    margin-top: 16px;
+}
+.loading_rss div {
+    width:89px;
+    height:64px;
+    background-image:url(../images/loading.gif);
+    background-position:center center;
+    background-repeat:no-repeat;
+}
