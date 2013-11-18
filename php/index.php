@@ -50,11 +50,15 @@ if(isset($_POST['username'])) {
 <html>
 <head>
 	<title>SnagaFlight</title>
-	<link style="text/css" rel="stylesheet" href="menu.css"/>
 	<link style="text/css" rel="stylesheet" href="Home.css"/>
+	<link style="text/css" rel="stylesheet" href="menu.css"/>
 	<link style="text/css" rel="stylesheet" href="loginBox.css"/>
+	<link type="text/css"  rel="stylesheet" href="RSSstyles.css"  />
 </head>
 <body>
+<!-------------------------------------
+			MENU FIELDS 
+			--------------------------------------------->
 <div id = "menu">
 <ul id="sdt_menu" class="sdt_menu">
     <li>
@@ -114,7 +118,10 @@ if(isset($_POST['username'])) {
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="Javascript/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="Javascript/menu.js"></script>
-
+<!-- END MENU FIELDS -->
+<!-------------------------------------
+			LOGIN FORM 
+		--------------------------------------------->
 <section class="container">
     <div class="login">
       <h1>Login</h1>
@@ -134,5 +141,26 @@ if(isset($_POST['username'])) {
       <p>New to SnagaFlight? <a href="index.php">Click here to create an account!</a>.</p>
     </div>
   </section>
+  <!--END LOGIN FORM -->
+<!-------------------------------------
+		RSS FEED ON TRAVEL NEWS. 
+		Source: http://www.script-tutorials.com/import-rss-feeds-using-jfeed-jquery/ 
+						--------------------------------------------->
+<script language="javascript" type="text/javascript" src="Javascript/jquery-1.4.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="Javascript/jquery.jfeed.js"></script>
+<script language="javascript" type="text/javascript" src="Javascript/jquery.aRSSFeed.js"></script>
+
+<div class="RSSAggrCont" rssnum="5" rss_url="http://travelchannel-cms.feeds.theplatform.com/ps/getRSS?client=Standard&PID=3RJi3f44L8ChyBdEYLqZeB2WxyB43X2a&startIndex=1&endIndex=500&sortField=lastModified&sortDescending=true">
+	<h1>Travel News</h1>
+    <div class="loading_rss">
+        <img alt="Loading..." src="./images/loading.gif" />
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+	$(document).ready( function() {
+		$('div.RSSAggrCont').aRSSFeed();
+	} );
+</script>
+<!-- END RSS FEED PORTION -->
 </body>
 </html>
