@@ -46,7 +46,9 @@ echo "</table>";
 		<!DOCTYPE HTML>
 <html>
 <body>
-
+<?php
+	require_once("menu.html");
+	?>
 <form id='bookFlight' method='post'>
 	
 Enter Flight Number:<br />
