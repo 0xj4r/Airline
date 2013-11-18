@@ -51,7 +51,6 @@ if(isset($_POST['username'])) {
 <head>
 	<title>SnagaFlight</title>
 	<link style="text/css" rel="stylesheet" href="Home.css"/>
-	<link style="text/css" rel="stylesheet" href="menu.css"/>
 	<link style="text/css" rel="stylesheet" href="loginBox.css"/>
 	<link type="text/css"  rel="stylesheet" href="RSSstyles.css"  />
 </head>
