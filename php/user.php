@@ -18,7 +18,6 @@ if(isset($_SESSION['id'])){
 <title>
 
 </title>
-<link style="text/css" rel="stylesheet" href="menu.css"/>
 </head>
 <?php echo $usname;
      ?>
