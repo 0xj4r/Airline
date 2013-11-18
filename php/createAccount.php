@@ -29,7 +29,6 @@ function RegisterUser()
 <!DOCTYPE HTML>
 <html>
 <head>
-<link style="text/css" rel="stylesheet" href="menu.css"/>
 <link style="text/css" rel="stylesheet" href="registerForm.css"/>
 <link style="text/css" rel="stylesheet" href="createAccount.css"/>
 </head>
