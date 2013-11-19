@@ -15,7 +15,7 @@ class Creport extends Cezpdf{
 $pdf = new Creport('a4','portrait');
 // to test on windows xampp
   if(strpos(PHP_OS, 'WIN') !== false){
-        $pdf->tempPath = 'C:\xampp\htdocs\newnewnew/Airline-master';
+        $pdf->tempPath = 'C:\xampp\htdocs\AirlineProject/Airline';
   }
   
 $pdf->ezSetMargins(20,20,20,20);
