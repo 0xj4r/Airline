@@ -1,0 +1,9 @@
+body {
+background-image: url(images/adminBackground.jpg);
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+.mainBody {
+float: center;
+}

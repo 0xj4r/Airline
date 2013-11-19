@@ -42,7 +42,7 @@ function RegisterUser()
 
 <section class = "container">
 <div class = "register">
-<form id='register' action='createAccount.php' method='post'
+<form id='regForm' action='createAccount.php' method='post'
     accept-charset='UTF-8'>
 <fieldset >
 <h1>Register Now!</h1>

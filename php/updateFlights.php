@@ -37,7 +37,7 @@ function Update()
 	
 		?>
 	
-	<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
 <link style="text/css" rel="stylesheet" href="updateFlights.css"/>

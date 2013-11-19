@@ -1,4 +1,4 @@
-.newFlight{
+.editFlight{
   width: 700px;
   position: relative;
   left: 100px;
@@ -6,7 +6,7 @@
   top: 100px;
 }
 
-.flightInfo {
+.changing {
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -16,7 +16,7 @@
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.flightInfo:before {
+.changing:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -27,7 +27,7 @@
   background: rgba(0, 0, 0, 0.08);
   border-radius: 4px;
 }
-.flightInfo h1 {
+.changing h1 {
   font-size: 22px;
   font-weight: 600;
   color: #333;
@@ -42,17 +42,17 @@
   -webkit-box-shadow: 0 1px whitesmoke;
   box-shadow: 0 1px whitesmoke;
 }
-.flightInfo p {
+.changing p {
   margin: 20px 0 0;
 }
-.flightInfo p:first-child {
+.changing p:first-child {
   margin-top: 0;
 }
-.flightInfo input[type=text] {
+.changing input[type=text] {
   width: 278px;
 }
 
-.flightInfo p.update {
+.changing p.update {
   text-align: right;
 }
 
