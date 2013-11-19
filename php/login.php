@@ -38,7 +38,8 @@ session_start();
 	else {
 		header("Location: createAccount.php");
 		}
-		}
+}
+	
 function determineUserType() {
 if(isset($_SESSION['id'])){
 	if($_SESSION['isAdmin'] == 1) {//If the user is an admin, redirect to admin controls	

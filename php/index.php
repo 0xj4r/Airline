@@ -3,37 +3,17 @@
 <head>
 	<title>SnagaFlight</title>
 	<link style="text/css" rel="stylesheet" href="Home.css"/>
-	<link style="text/css" rel="stylesheet" href="loginBox.css"/>
 	<link type="text/css"  rel="stylesheet" href="RSSstyles.css"  />
 </head>
 <body>
 <?php
 	session_start();
 	require_once("menu.html");
+	if(!isset($_SESSION['id'])) {
+		require_once("loginBox.html");
+		}
 	?>
-<!-------------------------------------
-			LOGIN FORM 
-		--------------------------------------------->
-<section class="container">
-    <div class="login">
-      <h1>Login</h1>
-	  	<form method="post" action="login.php">
-        <p><input type="email" name="username" value="" placeholder="Email" required></p>
-        <p><input type="password" name="password" value="" placeholder="Password" required></p>
-        <p class="remember_me">
-          <label>
-            <input type="checkbox" name="remember_me" id="remember_me">
-            Remember me on this computer
-          </label>
-        </p>
-        <p class="submit"><input type="submit" name="Submit" value="Login"></p>
-      </form>
-    </div>
-    <div class="login-help">
-      <p>New to SnagaFlight? <a href="createAccount.php">Click here to create an account!</a>.</p>
-    </div>
-  </section>
-  <!--END LOGIN FORM -->
+
 <!-------------------------------------
 		RSS FEED ON TRAVEL NEWS. 
 		Source: http://www.script-tutorials.com/import-rss-feeds-using-jfeed-jquery/ 

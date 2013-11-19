@@ -32,16 +32,6 @@
         </a>
     </li>
 	<li>
-        <a href="#">
-            <img src="./images/4.jpg" alt=""/>
-            <span class="sdt_active"></span>
-            <span class="sdt_wrap">
-                <span class="sdt_link">Contact Us</span>
-                <span class="sdt_descr">Tell us what you think</span>
-            </span>
-        </a>
-    </li>
-	<li>
         <?php  
 		include_once('login.php');
 		$dest = determineUserType();
@@ -52,6 +42,25 @@
             <span class="sdt_wrap">
                 <span class="sdt_link">My Account</span>
                 <span class="sdt_descr">Manage your Account</span>
+            </span>
+        </a>
+    </li>
+	<li>
+		<?php  
+			if(isset($_SESSION['id'])) {
+				$dest2 = 'logout.php';
+				$label = 'Logout';
+			}
+			else {
+				$dest2 = 'createAccount.php';
+				$label = 'Create Account';
+			}
+			echo '<a href= ' .$dest2 . '>';
+		?>
+            <img src="./images/6.jpg" alt=""/>
+            <span class="sdt_active"></span>
+            <span class="sdt_wrap">
+                <span class="sdt_link"><?php echo $label ?></span>
             </span>
         </a>
     </li>

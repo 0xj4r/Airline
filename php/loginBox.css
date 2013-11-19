@@ -10,7 +10,7 @@
 .container {
   margin-top: 100px;
   width: 640px;
-  position: absolute;
+  position: relative;
   top:100px;
   left:0px;
 }
