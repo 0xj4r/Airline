@@ -1,4 +1,5 @@
 <?php
+session_start();
 	include_once("dbconnect.php");	//Connects to database
 	
 $flight=mysqli_query($dbCon, "SELECT * FROM flights");
@@ -45,8 +46,12 @@ echo "</table>";
 	
 		<!DOCTYPE HTML>
 <html>
+<head>
+</head>
 <body>
-
+<?PHP
+require_once("menu.html");
+?>
 <form id='bookFlight' method='post'>
 	
 Enter Flight Number:<br />

@@ -1,6 +1,9 @@
-
-
 <?php
+$dbCon = mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
+//Parameters: server, username (default is root in XAMPP), password (XAMPP doesn't set), database name
+?>
+
+<!--?php
 $db_host = $_ENV['OPENSHIFT_MYSQL_DB_HOST'];
 $db_user = $_ENV['OPENSHIFT_MYSQL_DB_USERNAME'];
 $db_pass = $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD'];
@@ -16,7 +19,7 @@ if ($dbCon->connect_errno) {
  
 $dbCon->set_charset("utf8");
  
-?>
+?-->
 
 
 
