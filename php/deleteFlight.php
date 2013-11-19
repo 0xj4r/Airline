@@ -30,9 +30,9 @@ function Delete()
 	}
 }
 	?>
-	<link type="text/css"  rel="stylesheet" href="deleteFlight.css"  />
-<section class = "deleteFlight">
-<div class = "deleting">
+	<link type="text/css"  rel="stylesheet" href="adminFlightForms.css"  />
+<section class = "container">
+<div class = "contents">
 	<form id='flightFormDelete' method='post' accept-charset='UTF-8'>
 		<label for='FlightNumber'>Please Enter the Flight Number you wish to remove:</label>
 		<input type="text" name="FlightNumber" size="30" />

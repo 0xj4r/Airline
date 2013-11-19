@@ -65,9 +65,9 @@ function Change()
 }
 	?>
 	<html>
-<link style="text/css" rel="stylesheet" href="changeFlight.css"/>
-<section class = "editFlight">
-<div class = "changing">
+<link style="text/css" rel="stylesheet" href="adminFlightForms.css"/>
+<section class = "container">
+<div class = "contents">
 	<fieldset>
 	<h1>Change Flight</h1>
 	<table>

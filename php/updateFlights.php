@@ -5,7 +5,6 @@ if(isset($_POST['Update'])){
 	
 function Update()
 {
-	
 	$DepartCity=$_POST['DepartCity'];
 	$DepartState=$_POST['DepartState'];
 	$DepartAirport=$_POST['DepartAirport'];
@@ -41,9 +40,9 @@ window.onload=function(){alert("Error adding flight, please try again.");}
 	
 <!DOCTYPE HTML>
 <html>
-<link style="text/css" rel="stylesheet" href="updateFlights.css"/>
-<section class = "newFlight">
-<div class = "flightInfo">
+<link style="text/css" rel="stylesheet" href="adminFlightForms.css"/>
+<section class = "container">
+<div class = "contents">
 	<fieldset>
 	<h1>Add a New Flight</h1>
 	<table>

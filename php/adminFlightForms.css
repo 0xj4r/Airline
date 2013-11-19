@@ -1,12 +1,15 @@
-.newFlight{
+.container{
   width: 700px;
   position: relative;
-  left: 100px;
+  margin: 0 auto;
+  margin-left: 100px;
   float: center;
-  top: 100px;
+  top: 10px;
+  bottom: 15px;
+  padding: 20px 20px 20px;
 }
 
-.flightInfo {
+.contents {
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -16,7 +19,7 @@
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.flightInfo:before {
+.contents:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -27,7 +30,7 @@
   background: rgba(0, 0, 0, 0.08);
   border-radius: 4px;
 }
-.flightInfo h1 {
+.contents h1 {
   font-size: 22px;
   font-weight: 600;
   color: #333;
@@ -42,17 +45,17 @@
   -webkit-box-shadow: 0 1px whitesmoke;
   box-shadow: 0 1px whitesmoke;
 }
-.flightInfo p {
+.contents p {
   margin: 20px 0 0;
 }
-.flightInfo p:first-child {
+.contents p:first-child {
   margin-top: 0;
 }
-.flightInfo input[type=text] {
+.contents input[type=text] {
   width: 278px;
 }
 
-.flightInfo p.update {
+.contents p.update {
   text-align: right;
 }
 
