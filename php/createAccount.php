@@ -34,11 +34,17 @@ function RegisterUser()
 <link style="text/css" rel="stylesheet" href="createAccount.css"/>
 </head>
 <body>
+<<<<<<< HEAD
 <section class = "menuBar">
 <?php
 	require_once("menu.html");
 	?>
 	</section>
+=======
+<?php
+	require_once("menu.html");
+	?>
+>>>>>>> 9cf242b60b5b5d7c72070d4083b23022e097c01e
 <section class = "container">
 <div class = "register">
 <form id='register' action='createAccount.php' method='post'

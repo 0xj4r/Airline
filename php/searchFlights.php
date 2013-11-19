@@ -49,9 +49,15 @@ echo "</table>";
 <head>
 </head>
 <body>
+<<<<<<< HEAD
 <?PHP
 require_once("menu.html");
 ?>
+=======
+<?php
+	require_once("menu.html");
+	?>
+>>>>>>> 9cf242b60b5b5d7c72070d4083b23022e097c01e
 <form id='bookFlight' method='post'>
 	
 Enter Flight Number:<br />

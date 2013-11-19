@@ -10,7 +10,11 @@ session_start();
 	<link type="text/css"  rel="stylesheet" href="RSSstyles.css"  />
 </head>
 <body>
+<<<<<<< HEAD
 <?PHP
+=======
+<?php
+>>>>>>> 9cf242b60b5b5d7c72070d4083b23022e097c01e
 	require_once("menu.html");
 	?>
 <!-------------------------------------
