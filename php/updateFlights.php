@@ -43,15 +43,11 @@ function Update()
 <link style="text/css" rel="stylesheet" href="updateFlights.css"/>
 </head>
 <body>
-<<<<<<< HEAD
-<?PHP
-require_once("menu.html");
-?>
-=======
+
 <?php
 	require_once("menu.html");
 	?>
->>>>>>> 9cf242b60b5b5d7c72070d4083b23022e097c01e
+
 <section class = "addFlight">
 <div class = "flightInfo">
 	<form id='newFlight' method='post' accept-charset='UTF-8'>
