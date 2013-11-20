@@ -1,92 +1,61 @@
 <?php
 	session_start();
 	include_once("dbconnect.php");	//Connects to database
-	
-	
-	//code taken from http://www.w3schools.com/php/php_mysql_select.asp
-	$result=mysqli_query($dbCon, "SELECT * FROM members");
-	
-	echo "<table border='1'>
-	<tr>
-	<th>User ID</th>
-	<th>Username</th>
-	<th>Password</th>
-	<th>First Name</th>
-	<th>Last Name</th>
-	<th>Admin Rights</th>
-	</tr>";
-
-while($row = mysqli_fetch_array($result))
-  {
-  echo "<tr>";
-  echo "<td>" . $row['user_id'] . "</td>";
-  echo "<td>" . $row['username'] . "</td>";
-  echo "<td>" . $row['password'] . "</td>";
-  echo "<td>" . $row['firstname'] . "</td>";
-  echo "<td>" . $row['lastname'] . "</td>";
-  echo "<td>" . $row['adminRights'] . "</td>";
-  echo "</tr>";
-  }
-echo "</table>";
-	
-
-$flight=mysqli_query($dbCon, "SELECT * FROM flights");
-	
-	echo "<table border='1'>
-	<tr>
-	
-	<th>Flight Number</th>
-	<th>Departure City</th>
-	<th>Departure State</th>
-	<th>Departure Airport</th>
-	<th>Departure Time</th>
-	<th>Departure Time Zone</th>
-	<th>Arrival City</th>
-	<th>Arrival State</th>
-	<th>Arrival Airport</th>
-	<th>Arrival Time</th>
-	<th>Arrival Time Zone</th>
-	<th>Flight Duration</th>
-	<th>Seats Available</th>
-
-	</tr>";
-
-while($row = mysqli_fetch_array($flight))
-  {
-  echo "<tr>";
-  echo "<td>" . $row['flight_num'] . "</td>";
-  echo "<td>" . $row['depart_city'] . "</td>";
-  echo "<td>" . $row['depart_st'] . "</td>";
-  echo "<td>" . $row['depart_airport'] . "</td>";
-  echo "<td>" . $row['depart_time'] . "</td>";
-  echo "<td>" . $row['depart_tzone'] . "</td>";
-  echo "<td>" . $row['arrival_city'] . "</td>";
-  echo "<td>" . $row['arrival_st'] . "</td>";
-  echo "<td>" . $row['arrival_airport'] . "</td>";
-  echo "<td>" . $row['arrival_time'] . "</td>";
-  echo "<td>" . $row['arrival_tzone'] . "</td>";
-  echo "<td>" . $row['flight_duration'] . "</td>";
-   echo "<td>" . $row['flight_seats_available'] . "</td>";
-  echo "</tr>";
-  }
-echo "</table>";
-	
-	
-	
-		?>
-	
-	
-
+	include_once("login.php");
+	if(!userType()){
+		echo '<h2>Whoops! You need administrative privileges to view this content</h2><br /><a href="index.php">Click here to go home</a>';
+		exit();
+		}
+?>
 	
 <!DOCTYPE HTML>
 <html>
 <head>
+<link type="text/css"  rel="stylesheet" href="adminControl.css"  />
 </head>
+<table>
+<tr>
 <?PHP
 require_once("menu.html");
 ?>
-	<form method ="link" action="updateFlights.php/">
-	<input type="submit" Value="Add a flight"> 
-</form>
+</tr>
+</table>
+<section class = "mainBody">
+<div id = "addFlightText" onclick = "Javascript: toggle_visibility('addFlight', 'addFlightText', 'Click to add flight')">Click to add flight</div>
+<div id = "addFlight" style="display: none">
+<?php
+	include("updateFlights.php");
+	
+?>
+</div>
+<div id = "editFlightText" onclick = "Javascript: toggle_visibility('editFlight', 'editFlightText', 'Click to edit a flight')">Click to edit a flight</div>
+<div id = "editFlight" style="display: none">
+<?php
+	include_once("editFlight.php");
+	?>
+</div>
+<div id = "deleteFlightText" onclick = "Javascript: toggle_visibility('deleteFlight', 'deleteFlightText', 'Click to remove a flight')">Click to remove a flight</div>
+<div id = "deleteFlight" style="display: none">
+<?php
+	include_once("deleteFlight.php");
+	?>
+</div>
+
+</section>
+<script type="text/javascript">
+function toggle_visibility(id, textId, expandText) {
+    var e = document.getElementById(id);
+
+    if (e.style.display == 'none') {
+        document.getElementById(textId).innerHTML = 'Click to hide';
+        e.style.display = 'block';
+        //col.innerHTML = valu;
+    }
+    else {
+        e.style.display = 'none';
+        document.getElementById(textId).innerHTML = expandText;
+    }
+}
+</script>
 </body>
 </html>

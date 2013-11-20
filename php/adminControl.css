@@ -1,0 +1,45 @@
+body {
+background-image: url(images/background.jpg);
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+.mainBody {
+position: relative;
+margin-top: 100px;
+}
+
+#addFlightText:before, #editFlightText:before, #deleteFlightText:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  } 
+#addFlightText, #editFlightText, #deleteFlightText {
+  position: relative;
+  margin: 0 auto;
+  margin-left: 100px;
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 20px 20px 20px;
+  width: 725px;
+  text-align: center;
+  font-size: 17px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px white;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+  background-image: -webkit-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -moz-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -o-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: linear-gradient(to bottom, whiteffd, #eef2f5);
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+

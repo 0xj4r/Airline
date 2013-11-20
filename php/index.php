@@ -22,7 +22,7 @@
 <script language="javascript" type="text/javascript" src="Javascript/jquery.jfeed.js"></script>
 <script language="javascript" type="text/javascript" src="Javascript/jquery.aRSSFeed.js"></script>
 
-<div class="RSSAggrCont" rssnum="5" rss_url="http://travelchannel-cms.feeds.theplatform.com/ps/getRSS?client=Standard&PID=3RJi3f44L8ChyBdEYLqZeB2WxyB43X2a&startIndex=1&endIndex=500&sortField=lastModified&sortDescending=true">
+<div class="RSSAggrCont" rssnum="5" rss_url="http://rssfeeds.usatoday.com/UsatodaycomTravel-TopStories">
 	<h1>Travel News</h1>
     <div class="loading_rss">
         <img alt="Loading..." src="./images/loading.gif" />
