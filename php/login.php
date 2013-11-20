@@ -6,6 +6,7 @@ if(isset($_POST['username'])) {
 	}
 else
 	determineUserType();
+	
 function login(){
 session_start();
 	include_once("dbconnect.php");	//Connects to database
@@ -18,13 +19,14 @@ session_start();
 	
 	$paswd = md5($paswd); //hashing algorithm
 	
-	$sql = "SELECT username, password, adminRights, user_id FROM members WHERE username = '$usname' LIMIT 1";
+	$sql = "SELECT username, password, adminRights, user_id, firstname FROM members WHERE username = '$usname' LIMIT 1";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$dbUsname = $row[0];
 	$dbPassword = $row[1];
 	$dbIsAdmin = $row[2];
 	$usid = $row[3];
+	$dbFN = $row[4];
     
 
 	if($usname == $dbUsname && $paswd == $dbPassword) {
@@ -32,6 +34,7 @@ session_start();
 		$_SESSION['username'] = $usname;
         $_SESSION['id'] = $usid;
 		$_SESSION['isAdmin'] = $dbIsAdmin;
+		$_SESSION['firstName'] = $dbFN;
 		$destination = determineUserType();
 		header("Location:" .$destination);
 	}
@@ -39,10 +42,20 @@ session_start();
 		header("Location: createAccount.php");
 		}
 }
-	
+function userType(){
+	if(isset($_SESSION['id'])){
+		if($_SESSION['isAdmin'] == 1) {
+			return true;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
 function determineUserType() {
 if(isset($_SESSION['id'])){
-	if($_SESSION['isAdmin'] == 1) {//If the user is an admin, redirect to admin controls	
+	if(userType()) {//If the user is an admin, redirect to admin controls	
 		return "adminControl.php";
 	}
 	else{

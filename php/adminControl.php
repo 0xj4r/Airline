@@ -1,6 +1,11 @@
 <?php
 	session_start();
 	include_once("dbconnect.php");	//Connects to database
+	include_once("login.php");
+	if(!userType()){
+		echo '<h2>Whoops! You need administrative privileges to view this content</h2><br /><a href="index.php">Click here to go home</a>';
+		exit();
+		}
 ?>
 	
 <!DOCTYPE HTML>
