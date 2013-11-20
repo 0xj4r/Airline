@@ -1,4 +1,3 @@
-
 <?php
 //error_reporting(E_ALL); ini_set('display_errors', 'On');  
 // (TOOL FOR TESTING/DEBUGGING)// 
@@ -11,10 +10,10 @@ session_start();
 
 	if(isset($_POST['flightNum'])) {
 	
-	include_once("dbconnect.php");
+	$con4 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
 	//Set the posted flight number into local variable 
 	$flightNum = strip_tags($_POST['flightNum']);
-	$flightNum = mysqli_real_escape_string($dbCon, $flightNum);
+	$flightNum = mysqli_real_escape_string($con4, $flightNum);
 	// echo $flightNum;
 	$_SESSION['flight_num']=$flightNum;
 	
@@ -22,7 +21,7 @@ session_start();
 	
 	
 	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
-	$result = mysqli_query($dbCon, $mysql);
+	$result = mysqli_query($con4, $mysql);
 	$row = mysqli_fetch_row($result);
 	$dbDepartCity = $row[0];
 	$dbDepartSt = $row[1];
@@ -39,7 +38,7 @@ session_start();
 	$_SESSION['flight_duration']=$dbFlightDuration;
 	
 	//set flight_booked in members database to flight number booked
-	mysqli_query($dbCon,"UPDATE members SET flight_booked='$flightNum' WHERE user_id='$userid'")
+	mysqli_query($con4,"UPDATE members SET flight_booked='$flightNum' WHERE user_id='$userid'")
 	or die(mysql_error());
 
 	header("Location: bookFlight.php");
@@ -97,7 +96,7 @@ function SearchFlights() {
 	  echo "<td>" . $row['depart_st'] . "</td>";
 	  echo "<td>" . $row['arrival_city'] . "</td>";
 	  echo "<td>" . $row['arrival_st'] . "</td>";
-	  echo "<td><form method='post' action='test.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'>
+	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'>
 	  			<input type='submit'  value='Get Ticket'></form></td>";
 
 	  echo "</tr>";
@@ -127,7 +126,7 @@ Enter Flight Number:<br />
 
 <div id='searchflights' >
 
-			<form id='searchflights1' action='test.php' method='post' 
+			<form id='searchflights1' action='searchFlights.php' method='post' 
 			    accept-charset='UTF-8'>
 			<fieldset>
 			<h1>Search Flights</h1>
