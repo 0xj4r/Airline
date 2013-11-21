@@ -3,11 +3,17 @@ session_start();
 
 if(isset($_POST['Update'])) {
 	updateNames();
+	header("Location: user.php");
 	}
 if(isset($_POST['Change'])) {
 	changePWord();
+	header("Location: user.php");
 	}
 	
+if(isset($_POST['Delete'])) {
+	deleteUser();
+	}
+
 function updateNames() {
 	include_once('dbConnect.php');
 	$uName = $_SESSION['username'];
@@ -31,6 +37,15 @@ function changePWord() {
 	$paswd = md5($paswd);
 	$sql = "UPDATE members SET password = '".$paswd."' WHERE password = '".$oldpaswd."'";
 	$query = mysqli_query($dbCon, $sql);
+	return $query;
+}
+
+function deleteUser() {
+	include_once('dbConnect.php');
+	$uName = $_SESSION['username'];
+	$sql = "DELETE FROM members WHERE username = '".$uName."'";
+	$query = mysqli_query($dbCon, $sql);
+	include_once('logout.php');
 	return $query;
 }
 ?>

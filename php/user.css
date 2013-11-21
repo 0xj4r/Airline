@@ -9,7 +9,7 @@ position: relative;
 margin-top: 100px;
 }
 
-#showAccountInfoText:before, #changeNameText:before, #changePassText:before {
+#showAccountInfoText:before, #changeNameText:before, #changePassText:before, #deleteAccText:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -20,7 +20,7 @@ margin-top: 100px;
   background: rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   } 
-#showAccountInfoText, #changeNameText, #changePassText {
+#showAccountInfoText, #changeNameText, #changePassText, #deleteAccText {
   position: relative;
   margin: 0 auto;
   margin-left: 100px;
@@ -42,18 +42,17 @@ margin-top: 100px;
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.container1, .container2, .container3{
+.container1, .container2, .container3, .container4 {
   width: 375px;
   position: relative;
   margin: 0 auto;
   margin-left: 100px;
-  float: center;
   top: 10px;
-  bottom: 15px;
+  bottom: 20px;
   padding: 10px 10px 10px;
 }
 
-#showAccountInfo, #changeName, #changePass {
+#showAccountInfo, #changeName, #changePass, #deleteAcc {
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -63,7 +62,7 @@ margin-top: 100px;
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-#showAccountInfo:before, #changeName:before, #changePass:before {
+#showAccountInfo:before, #changeName:before, #changePass:before, #deleteAcc:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -75,21 +74,15 @@ margin-top: 100px;
   border-radius: 4px;
 }
 
-#changeName p, #changePass  p {
+#changeName p, #changePass p, #deleteAcc  p {
   margin: 20px 0 0;
 }
-#changeName p:first-child, #changePass  p:first-child {
+#changeName p:first-child, #changePass  p:first-child, #deleteAcc p:first-child {
   margin-top: 0;
 }
 #changeName input[type=text], #changePass  input[type=text] {
   width: 278px;
 }
-
-#changeName p.update, #changePass  p.update {
-  text-align: right;
-}
-
-
 :-moz-placeholder {
   color: #c9c9c9 !important;
   font-size: 12px;
@@ -163,6 +156,6 @@ input[type=submit]:active {
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.lt-ie9 input[type=email], .lt-ie9 input[type=password], .lt-ie9 input[type=text] {
+.lt-ie9 input[type=password], .lt-ie9 input[type=text] {
   line-height: 34px;
 }

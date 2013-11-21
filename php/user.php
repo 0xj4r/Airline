@@ -12,7 +12,7 @@ if(isset($_SESSION['id'])){
 	}
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>
@@ -44,12 +44,17 @@ require_once("menu.html");
 			$flight_num = $row[0];
 			$firstname = $row[1];
 			$lastname = $row[2];
+			if($flight_num > 0) {
 			$sqlFlight = "SELECT depart_city, depart_st, depart_airport, depart_time, arrival_city, arrival_st, arrival_airport, arrival_time, flight_duration, price FROM flights WHERE flight_num = '" .$flight_num. "'";
 			$flightquery = mysqli_query($dbCon, $sqlFlight);
 			$Frow = mysqli_fetch_row($flightquery);
 			$message = "<p>You've been booked to fly from " .$Frow[0]. ", " .$Frow[1]." at " .$Frow[2]. " airport at " .$Frow[3].".<br />
 			You will arrive at " .$Frow[4].", ".$Frow[5]." at " .$Frow[6]." airport at " .$Frow[7].", which will take " .$Frow[8]." hours.<br /> 
 			You have already been charged $" .$Frow[9]. "<br />Have a safe trip!</p>";
+			}
+			else {
+				$message = "<p>Oops! Looks like you haven't booked a flight. Why not see where we can take you?</p>";
+				}
 			echo $message;?>
 	</div>
 	</section>
@@ -77,7 +82,18 @@ require_once("menu.html");
 		</form>
 	</div>
 	</section>
-
+	<div id = "deleteAccText" onclick = "Javascript: toggle_visibility('deleteAcc', 'deleteAccText', 'Click to permanently delete your account')">Click to permanently delete your account</div>
+	<section class = "container4">
+	<div id = "deleteAcc" style="display:none">
+		<form id='deleteAccount' action='alterUserData.php' method='post'>
+			<p>We're sad to see you go! By deleting your account, we will no longer be able to sell you airline tickets. 
+			We will have no record of your account or previous purchases. 
+			If you understand this and still wish to delete your account, push the button below.</p>
+			<p class = "submit"><input type = "submit" value = "Delete" name = "Delete" /></p>
+		</form>
+	</div>
+	</section>
+</section>
 
 <script type="text/javascript">
 function toggle_visibility(id, textId, expandText) {
@@ -94,6 +110,6 @@ function toggle_visibility(id, textId, expandText) {
     }
 }
 </script>
-</section>
+
 </body>
 </html>

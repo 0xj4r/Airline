@@ -18,11 +18,14 @@ function RegisterUser()
 	$prequery = "SELECT user_id FROM members WHERE username = '$email' LIMIT 1";
 	$query = "INSERT INTO `members`(`username`, `password`, `firstname`, `lastname`, `adminRights`) VALUES ('".$email."','".$pword."','".$fname."','".$lname."','0')";
 	$preresult = mysqli_query($dbCon, $prequery);
-	if(!$preresult) {
-	$result = mysqli_query($dbCon, $query);
-	if($result) {
-	header('Location: index.php');
-	}
+	$row = mysqli_fetch_row($preresult);
+	$uid = $row[0];
+	if($uid == NULL) {
+		$result = mysqli_query($dbCon, $query);
+		echo $result;
+		if($result) {
+		header('Location: index.php');
+		}
 	}
 	else {
 	die("That email is already registered.");
