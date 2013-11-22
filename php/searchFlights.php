@@ -10,17 +10,18 @@ session_start();
 
 	if(isset($_POST['flightNum'])) {
 	
-	$con4 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+	$con4 = mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
 	//Set the posted flight number into local variable 
 	$flightNum = strip_tags($_POST['flightNum']);
 	$flightNum = mysqli_real_escape_string($con4, $flightNum);
 	// echo $flightNum;
+	//$flightNum=$_POST['flightNum'];
 	$_SESSION['flight_num']=$flightNum;
 	
 	$userid=$_SESSION['id'];
 	
 	
-	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
+	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration, logo FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
 	$result = mysqli_query($con4, $mysql);
 	$row = mysqli_fetch_row($result);
 	$dbDepartCity = $row[0];
@@ -29,6 +30,7 @@ session_start();
     $dbArrivalCity = $row[3]; 
 	$dbArrivalSt= $row[4]; 
 	$dbFlightDuration=$row[5];
+	$dbLogo=$row[6];
 	
 	$_SESSION['depart_city']=$dbDepartCity;
 	$_SESSION['depart_st']=$dbDepartSt;
@@ -36,14 +38,15 @@ session_start();
 	$_SESSION['arrival_city']=$dbArrivalCity;
 	$_SESSION['arrival_st']=$dbArrivalSt;
 	$_SESSION['flight_duration']=$dbFlightDuration;
-	
+	$_SESSION['logo']=$dbLogo;
 	//set flight_booked in members database to flight number booked
 	mysqli_query($con4,"UPDATE members SET flight_booked='$flightNum' WHERE user_id='$userid'")
 	or die(mysql_error());
+	
 
 	header("Location: bookFlight.php");
 	//redirect to bookFlight 
-	// header("Location: bookFlight.php");
+	
 	// $flightNum->close(); 
 }
 
@@ -96,14 +99,21 @@ function SearchFlights() {
 	  echo "<td>" . $row['depart_st'] . "</td>";
 	  echo "<td>" . $row['arrival_city'] . "</td>";
 	  echo "<td>" . $row['arrival_st'] . "</td>";
+
+	  
 	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'>
 	  			<input type='submit'  value='Get Ticket'></form></td>";
 
 	  echo "</tr>";
 	  }
 	echo "</table>";
+	
 
-	$flights->close(); 
+
+	
+		$flights->close(); 
+		
+
 }
 
 	?>
@@ -134,9 +144,9 @@ Enter Flight Number:<br />
 			<label for='dSt' >Departing State: </label>
 			<!-- <input type='text' name='depart_st' id='depart_st' maxlength="30" /> -->
 				<?php
-					$con = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+					//$con = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
 					// include_once("dbconnect.php"); 
-
+					$con=mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
 					$result = mysqli_query($con, "SELECT depart_st FROM flights");
 
 					echo '<SELECT name=depart_st>';
@@ -149,8 +159,8 @@ Enter Flight Number:<br />
 
 	
 				<label for=dCity>Departing City: </label>
-				<?
-					$con1 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+				<?php
+					$con1 = mysqli_connect("localhost", "root","", "airlineaccounts") or die("cannot connect");
 					$queryCity = "SELECT depart_city FROM flights";
 					
 					$result2 = mysqli_query($con1, $queryCity);
@@ -169,8 +179,8 @@ Enter Flight Number:<br />
 			<label for='aSt' >Arriving State:</label>
 			<!-- <input type='text' name='arrival_st' id='arrival_st' maxlength="50" /> -->
 				<?php
-				$con2 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
-
+				//$con2 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+					$con2=mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
 				$result1 = mysqli_query($con2, "SELECT arrival_st FROM flights");
 
 				echo '<SELECT name=arrival_st>';
@@ -185,8 +195,9 @@ Enter Flight Number:<br />
 			  
 			<label for='aCity' >Arriving City:</label>
 			<!-- <input type='text' name='arrival_city' id='arrival_city' maxlength="255" /> -->
-			<?
-					$con3 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+			<?php
+									$con3=mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
+					//$con3 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
 					$queryCity1 = "SELECT arrival_city FROM flights";
 					
 					$result3 = mysqli_query($con3, $queryCity1);
