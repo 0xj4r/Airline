@@ -198,6 +198,7 @@ Enter Flight Number:<br />
     </li>
 </ul>
 </div>
+<div class="big_div">
 <div class="search_flights" >
 	
 	
@@ -275,6 +276,7 @@ Enter Flight Number:<br />
 	SearchFlights(); 
 }
 	?>
+</div>
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="Javascript/jquery.easing.1.3.js"></script>
