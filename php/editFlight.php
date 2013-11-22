@@ -44,9 +44,11 @@ function Change()
 			$mysql = $mysql . "flight_seats_available = '" .$newSeats."', ";
 		if($newPrice !=NULL)
 			$mysql = $mysql . "price = '" .$newPrice."', ";
-		if($newLogo !=NULL && gettype($newLogo) == 'string')
+		  $logoCheck=@getimagesize($newLogo);
+			
+		if($newLogo !=NULL && gettype($newLogo) == 'string' && preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$newLogo))
 		$mysql = $mysql . "logo = '" .$newLogo."', ";
-		if($newClass !=NULL && gettype($newClass) == 'string')
+		if($newClass !=NULL && gettype($newClass) == 'string' && ($newClass=="domestic" || $newClass=="international") )
 		$mysql = $mysql . "international = '" .$newClass."', ";
 		$mysql = substr($mysql, 0, -2);
 		$mysql = $mysql . " WHERE flight_num = ". $FlightNumber;
@@ -61,7 +63,7 @@ function Change()
 			echo '<script type="text/javascript"> 
 				window.onload=function(){alert("Error changing flight, please try again.");} 
 				</script>'; 
-			die(mysqli_error($dbCon));
+			//die(mysqli_error($dbCon));
 		}
 	}
 	else {

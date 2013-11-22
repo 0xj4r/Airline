@@ -5,6 +5,18 @@ if(isset($_POST['Update'])){
         
 function Update()
 {
+	$logo = test_input($_POST['logo']);
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$logo))
+  {
+ echo '<script type="text/javascript"> 
+	window.onload=function(){alert("Please enter a valid URL");} 
+	</script>'; 
+	}
+
+
+
+  else
+  {
         $DepartCity=$_POST['DepartCity'];
         $DepartState=$_POST['DepartState'];
         $DepartAirport=$_POST['DepartAirport'];
@@ -17,7 +29,7 @@ function Update()
         $SeatsAvailable=$_POST['SeatsAvailable'];
                 $Logo=$_POST['logo'];
         $Price = $_POST['price'];
-		$Class = $_POST['class'];
+		$Class = $_POST['class1'];
         include("dbconnect.php");        //Connects to database
         $mysql="INSERT INTO flights (depart_city, depart_st, depart_airport, depart_time, 
                 arrival_city, arrival_st, arrival_airport, arrival_time, flight_duration, flight_seats_available, price, logo, international )
@@ -37,7 +49,9 @@ window.onload=function(){alert("Error adding flight, please try again.");}
                // die(mysqli_error($dbCon));
         }
 }
-        
+}
+     
+ 
                 ?>
         
 <!DOCTYPE HTML>
@@ -113,7 +127,7 @@ window.onload=function(){alert("Error adding flight, please try again.");}
 		  <tr>
                 <td>
                 <label for='class'>Class (domestic or international):</label>
-                <input type = "text" name = 'class' size = "30" />
+                <input type = "text" name = 'class1' size = "30" />
                 </td>
                
 			   <td>
