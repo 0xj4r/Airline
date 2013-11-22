@@ -7,8 +7,9 @@ background-attachment: fixed;
 
 #menu {
 	margin-right: auto; 
-	margin-left: 10%; 
+	margin-left: auto; 
 	position: center;
+	width: 1000px;
 	padding:-10px;
 }
 ul.sdt_menu{
@@ -139,15 +140,15 @@ form.flightselector{
 div.flightsearchtable{
 	padding: 10px;
 	width: 1300px;
-	margin-left: 350px; 
-	margin-right: 350px;
-
-	position: bottom;
+	margin-left: auto; 
+	margin-right: auto;
+	margin-top:100px;
+	position: center;
 }
 #flightstable{
 	border: 5px solid;
 	background-color: white; 
 	border-radius: 5px; 
-	margin-top:500px;
+	/*margin-top:500px;*/
 
 }
