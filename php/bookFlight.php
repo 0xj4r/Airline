@@ -1,7 +1,6 @@
 <?php
-
+session_start();
 echo "Your flight has been successfully booked";
-
 
 ?>
 

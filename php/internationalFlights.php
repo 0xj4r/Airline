@@ -13,7 +13,7 @@ session_start();
 	if(isset($_POST['flightNum'])) {
 	$flightNum = $_POST['flightNum']; 
 	// include("dbconnect.php");	//Set the posted flight number into local variable 
-	$con1 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+	$con1 = mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
 	$flightNum = strip_tags($_POST['flightNum']);
 	$flightNum = mysqli_real_escape_string($con1, $flightNum);
 	// echo $flightNum;
@@ -22,7 +22,7 @@ session_start();
 	$userid=$_SESSION['id'];
 	
 	
-	$mysql = "SELECT depart_city, depart_country, depart_time, arrival_city, arrival_country, flight_duration FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
+	$mysql = "SELECT depart_city, depart_country, depart_time, arrival_city, arrival_country, flight_duration, logo, price, international FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
 	$result4 = mysqli_query($con1, $mysql);
 	$row = mysqli_fetch_row($result4);
 	$dbDepartCity = $row[0];
@@ -32,6 +32,9 @@ session_start();
 	$dbArrivalCountry= $row[4]; 
 
 	$dbFlightDuration=$row[5];
+	$dbLogo=$row[6];
+	$dbPrice=$row[7];
+	$dbClass=$row[8];
 	
 	$_SESSION['depart_city']=$dbDepartCity;
 	$_SESSION['depart_country']=$dbDepartCountry;
@@ -39,6 +42,9 @@ session_start();
 	$_SESSION['arrival_city']=$dbArrivalCity;
 	$_SESSION['arrival_country']=$dbArrivalCountry;
 	$_SESSION['flight_duration']=$dbFlightDuration;
+	$_SESSION['logo']=$dbLogo;
+	$_SESSION['price']=$dbPrice;
+	$_SESSION['class']=$dbClass;
 	
 	//set flight_booked in members database to flight number booked
 	mysqli_query($con1,"UPDATE members SET flight_booked='$flightNum' WHERE user_id='$userid'")

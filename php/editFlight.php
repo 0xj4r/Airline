@@ -20,6 +20,7 @@ function Change()
 		$newDuration = $_POST['FlightDuration'];
 		$newSeats = $_POST['SeatsAvailable'];
 		$newPrice = $_POST['price'];
+		$newLogo = $_POST['Logo'];
 		if($newDCity != NULL && gettype($newDCity) == 'string')
 			$mysql = $mysql . " depart_city = '" .$newDCity. "', ";
 		if($newDState !=NULL && gettype($newDCity) == 'string')
@@ -42,9 +43,12 @@ function Change()
 			$mysql = $mysql . "flight_seats_available = '" .$newSeats."', ";
 		if($newPrice !=NULL)
 			$mysql = $mysql . "price = '" .$newPrice."', ";
+		if($newLogo !=NULL && gettype($newLogo) == 'string')
+		$mysql = $mysql . "logo = '" .$newLogo."', ";
 		$mysql = substr($mysql, 0, -2);
 		$mysql = $mysql . " WHERE flight_num = ". $FlightNumber;
 		$query = mysqli_query($dbCon, $mysql);
+		
 		if($query) {
 			echo '<script type="text/javascript"> 
 				window.onload=function(){alert("Flight changed successfully.");} 
@@ -132,6 +136,10 @@ function Change()
 		<td>
 		<label for='price'>Ticket Price:</label>
 		<input type = "text" name = 'price' size = "30" />
+		</td>
+		<td>
+		<label for='Logo'>Airline Logo:</label>
+		<input type="text" name="Logo" size="150" />
 		</td>
 		<td>
 		<p><input type="submit" value="Change" name="Change" /></p>
