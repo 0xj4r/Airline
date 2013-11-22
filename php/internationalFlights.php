@@ -214,7 +214,7 @@ Enter Flight Number:<br />
 			</button></h3></h1>
 		
 		<div class='dropdowns'>	
-			<label for='dSt' >Departing State: </label>
+			<label for='dSt' >Departing Country: </label>
 				<?php
 					include("dbconnect.php"); 
 					$result = mysqli_query($dbCon, "SELECT DISTINCT depart_country FROM flights where international='international'");
@@ -239,7 +239,7 @@ Enter Flight Number:<br />
 					 	$result2->close();
 				?>
 
-			<label for='aSt' >Arriving State:</label>
+			<label for='aSt' >Arriving Country:</label>
 				<?php
 					include("dbconnect.php"); 
 					$result1 = mysqli_query($dbCon, "SELECT DISTINCT arrival_country FROM flights where international='international'");
