@@ -5,9 +5,9 @@ background-repeat: no-repeat;
 background-attachment: fixed;
 }
 #menu {
-	margin-right: auto; 
-	margin-left: 21.5%; 
-	position:absolute;
+	margin-right: 415px; 
+	margin-left: 415px; 
+	position:center;
 	padding:-10px;
 }
 ul.sdt_menu{
@@ -125,11 +125,11 @@ div.search_flights{
 	padding: 10px;
 	border-radius: 5px; 
 	border: 5px solid;
-	width: 44%;
-	margin-right: 28%;
-	margin-left: 28%;
-	margin-top:10%;
-	position: center;
+	width: 830px;
+	margin-right: 525px;
+	margin-left: 525px;
+	margin-top:250px;
+	position: fixed;
 }
 form.flightselector{
 	margin-left: auto; 
@@ -137,12 +137,16 @@ form.flightselector{
 }
 div.flightsearchtable{
 	padding: 10px;
+	width: 1200px;
+	margin-left: 350px; 
+	margin-right: 350px;
+
+	position: bottom;
 }
 #flightstable{
 	border: 5px solid;
 	background-color: white; 
 	border-radius: 5px; 
-	width:70%;
-	margin-left: 15%; 
-	margin-left: 15%;
+	margin-top:500px;
+
 }
