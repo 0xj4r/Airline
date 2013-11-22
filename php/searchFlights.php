@@ -17,8 +17,8 @@ session_start();
 //Set the posted flight number into local variable
 	$flightNum = $_POST['flightNum']; 
 	// include("dbconnect.php");	//Set the posted flight number into local variable 
-	
-	$con1 = mysqli_connect("localhost", "root", "", "airlineaccounts") or die("cannot connect");
+	include("dbconnect.php"); 
+	$con1 = $dbCon; 
 	
 
 	$flightNum = strip_tags($_POST['flightNum']);
@@ -29,7 +29,7 @@ session_start();
 	$userid=$_SESSION['id'];
 	
 
-	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration, logo, price, international FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
+	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration, logo, coach_price, fc_price, international FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
 	$result4 = mysqli_query($con1, $mysql);
 	$row = mysqli_fetch_row($result4);
 
@@ -80,15 +80,15 @@ function SearchFlights() {
 
 	$depart_city = strip_tags($_POST['depart_city']);
 	$depart_city = mysqli_real_escape_string($dbCon, $depart_city);
-	$depart_st = strip_tags($_POST['depart_st']);
-	$depart_st = mysqli_real_escape_string($dbCon, $depart_st);
+	// $depart_st = strip_tags($_POST['depart_st']);
+	// $depart_st = mysqli_real_escape_string($dbCon, $depart_st);
 	$arrival_city = strip_tags($_POST['arrival_city']);
 	$arrival_city = mysqli_real_escape_string($dbCon, $arrival_city);
-	$arrival_st = strip_tags($_POST['arrival_st']);
-	$arrival_st = mysqli_real_escape_string($dbCon, $arrival_st);
+	// $arrival_st = strip_tags($_POST['arrival_st']);
+	// $arrival_st = mysqli_real_escape_string($dbCon, $arrival_st);
 
 	$query = "SELECT * FROM flights WHERE depart_city='$depart_city'
-		  and depart_st = '$depart_st' and arrival_city = '$arrival_city' and arrival_st='$arrival_st'";
+		  and arrival_city = '$arrival_city' ";
 	$flights = mysqli_query($dbCon, $query) or die (mysqli_error());  
 		
 	// if($flights) {
@@ -106,6 +106,8 @@ function SearchFlights() {
 	<th>Depart Time</th>
 	<th>Arriving City</th>
 	<th>Arrival Time</th>
+	<th>First Class Tickets</th>
+	<th>Coach Tickets</th>
 
 	<th></th>
 	</tr></thead>";
@@ -118,11 +120,15 @@ function SearchFlights() {
 	  echo "<td>" . $row['depart_time'] . "</td>";
 	  echo "<td>" . $row['arrival_city'] . ", " . $row['arrival_st'] . "</td>";
 	  echo "<td>" . $row['arrival_time'] . "</td>";
-
+	  
+	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'> $".$row['fc_price']." "; 
+	  			 if(isset($_SESSION['id'])){ echo   "  <button class='btn btn-success' type='submit' >Get Ticket</button></form></td>";}
 	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'>
-	  			<button class='btn btn-success' type='submit' >Get Ticket</button></form></td></tbody>";
+	  			$".$row['coach_price']."  ";  
+	  			if(isset($_SESSION['id'])){ echo "  <button class='btn btn-success' type='submit' >Get Ticket</button></form></td>";} 
 
 	  echo "</tr>";
+	  echo "</tbody>";
 	  }
 	echo "</table>";
 	
@@ -234,63 +240,34 @@ Enter Flight Number:<br />
 			</button></h3></h1>
 		
 		<div class='dropdowns'>	
-			<label for='dSt' >Departing State: </label>
-				<?php
-
-				
-
-					include("dbconnect.php"); 
-					$result = mysqli_query($dbCon, "SELECT DISTINCT depart_st FROM flights where international='domestic'");
-
-					echo '<SELECT name=depart_st>';
-					while($row1 = $result->fetch_assoc()) {
-						echo '<OPTION VALUE='.$row1['depart_st'].'>'.$row1['depart_st'].'</option>';	
-					}
-					echo '</select>';
-					$result->close(); 
-				?>
+			
 
 				
 			<label for=dCity>Departing City: </label>
 				<?php
 					include("dbconnect.php"); 
-					$queryCity = "SELECT DISTINCT depart_city FROM flights where international='domestic'";
+					$queryCity = "SELECT DISTINCT depart_city, depart_st FROM flights where international='0'";
 					$result2 = mysqli_query($dbCon, $queryCity);
 
 					echo '<SELECT name=depart_city>';
 						while($row2 = $result2->fetch_assoc()) {
-							echo '<OPTION VALUE='.$row2['depart_city'].'>'.$row2['depart_city'].'</option>';	
+							echo '<OPTION VALUE='.$row2['depart_city'].'>'.$row2['depart_city'].', '.$row2['depart_st'].'</option>';	
 						}
 						echo '</select>';
 					 	$result2->close();
 				?>
 
-			<label for='aSt' >Arriving State:</label>
-				<?php
-				include("dbconnect.php");
-				
-				$result1 = mysqli_query($dbCon, "SELECT arrival_st FROM flights");
-
-				echo '<SELECT name=arrival_st>';
-				while($row1 = $result1->fetch_assoc()) {
-				echo '<OPTION VALUE='.$row1['arrival_st'].'>'.$row1['arrival_st'].'</option>';	
-				}
-				echo '</select>';
-
-				$result1->close();
-
-				?>
-
+			
 			  
 			<label for='aCity' >Arriving City:</label>
 				<?php
 					include("dbconnect.php"); 
-					$queryCity1 = "SELECT DISTINCT arrival_city FROM flights where international='domestic'";
+					$queryCity1 = "SELECT DISTINCT arrival_city, arrival_st FROM flights where international='0'";
 					$result3 = mysqli_query($dbCon, $queryCity1);
 
 					echo '<SELECT name=arrival_city>';
 						while($row2 = $result3->fetch_assoc()) {
-							echo '<OPTION VALUE='.$row2['arrival_city'].'>'.$row2['arrival_city'].'</option>';	
+							echo '<OPTION VALUE='.$row2['arrival_city'].'>'.$row2['arrival_city'].', '.$row2['arrival_st'].'</option>';	
 						}
 						echo '</select>';
 					 	$result3->close();

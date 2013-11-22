@@ -4,10 +4,11 @@ background-image: url(./images/background.jpg);
 background-repeat: no-repeat;
 background-attachment: fixed;
 }
+
 #menu {
-	margin-right: 415px; 
-	margin-left: 415px; 
-	position:center;
+	margin-right: auto; 
+	margin-left: 10%; 
+	position: center;
 	padding:-10px;
 }
 ul.sdt_menu{
@@ -125,11 +126,11 @@ div.search_flights{
 	padding: 10px;
 	border-radius: 5px; 
 	border: 5px solid;
-	width: 830px;
-	margin-right: 525px;
-	margin-left: 525px;
+	width: 550px;
+	margin-right: auto;
+	margin-left: auto;
 	margin-top:250px;
-	position: fixed;
+	position: center;
 }
 form.flightselector{
 	margin-left: auto; 
@@ -137,7 +138,7 @@ form.flightselector{
 }
 div.flightsearchtable{
 	padding: 10px;
-	width: 1200px;
+	width: 1300px;
 	margin-left: 350px; 
 	margin-right: 350px;
 
