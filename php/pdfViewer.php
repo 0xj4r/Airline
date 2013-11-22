@@ -49,7 +49,7 @@ $price=$_SESSION['price'];
 
 $pdf->addText(300, 800, 24, "<b>Airline Ticket<b>", 0, 'center', 0);
 
-$pdf->ezImage("http://www.logologo.com/logos/eagle-in-flight-logo.jpg",30,100,'width','center');
+$pdf->ezImage($logo,30,100,'width','center');
 
 $pdf->addText(10, 650, 16, "<b>From: <b>", 0, 'left', 0);
 $pdf->addText(150, 650, 14, $departCity, 0, 'left', 0);

@@ -1,5 +1,4 @@
 
-
 members Table: 
 mysql> members
 +---------+----------------------+----------------------------------+-----------+----------+-------------+
@@ -19,7 +18,7 @@ mysql> members
 flights Table: 
 mysq> flights 
 +------------+-------------+-----------+--------------------+-------------+--------------+--------------+------------+-----------------+--------------+---------------+-----------------+------------------------+
-| flight_num | depart_city | depart_st | depart_airport     | depart_time | depart_tzone | arrival_city | arrival_st | arrival_airport | arrival_time | arrival_tzone | flight_duration | flight_seats_available |
+| flight_num | depart_city | depart_st | depart_airport     | depart_time | depart_tzone | arrival_city | arrival_st | arrival_airport | arrival_time | arrival_tzone | flight_duration | flight_seats_available | logo|international|price|depart_country|arrival_country| 
 +------------+-------------+-----------+--------------------+-------------+--------------+--------------+------------+-----------------+--------------+---------------+-----------------+------------------------+
 |          1 | Phoenix     | AZ        |                    | 00:00:00    | 00:00:00     |              |            |                 | 00:00:00     | 00:00:00      | 00:00:00        |                      0 |
 |          2 | Scottsdale  | AZ        | Scottsdale Airport | 06:45:00    | 00:00:00     |              |            |                 | 00:00:00     | 00:00:00      | 00:00:00        |                      0 |
