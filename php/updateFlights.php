@@ -1,4 +1,4 @@
-<?php
+<<?php
 if(isset($_POST['Update'])){
         Update();
         }
@@ -15,13 +15,14 @@ function Update()
         $ArrivalTime=$_POST['ArrivalTime'];
         $FlightDuration=$_POST['FlightDuration'];
         $SeatsAvailable=$_POST['SeatsAvailable'];
-		$Logo=$_POST['logo'];
+                $Logo=$_POST['logo'];
         $Price = $_POST['price'];
+		$Class = $_POST['class'];
         include("dbconnect.php");        //Connects to database
         $mysql="INSERT INTO flights (depart_city, depart_st, depart_airport, depart_time, 
-                arrival_city, arrival_st, arrival_airport, arrival_time, flight_duration, flight_seats_available, price, logo )
+                arrival_city, arrival_st, arrival_airport, arrival_time, flight_duration, flight_seats_available, price, logo, international )
                 VALUES ('".$DepartCity."', '".$DepartState."', '".$DepartAirport."', '".$DepartTime."', '".$ArrivalCity."', '".$ArrivalState."',
-                '".$ArrivalAirport."', '".$ArrivalTime."', '".$FlightDuration."', '".$SeatsAvailable."', '".$Price."', '".$Logo."')";
+                '".$ArrivalAirport."', '".$ArrivalTime."', '".$FlightDuration."', '".$SeatsAvailable."', '".$Price."', '".$Logo."', '".$Class."')";
                 $insert = mysqli_query($dbCon, $mysql);
         
         if($insert) {
@@ -33,7 +34,7 @@ window.onload=function(){alert("Flight added successfully.");}
                 echo '<script type="text/javascript"> 
 window.onload=function(){alert("Error adding flight, please try again.");} 
 </script>'; 
-                die(mysqli_error($dbCon));
+               // die(mysqli_error($dbCon));
         }
 }
         
@@ -103,11 +104,19 @@ window.onload=function(){alert("Error adding flight, please try again.");}
                 <label for='price'>Ticket Price:</label>
                 <input type = "text" name = 'price' size = "30" />
                 </td>
-				<td>
+                                <td>
                 <label for='logo'>Airline Logo:</label>
                 <input type = "text" name = 'logo' size = "150" />
                 </td>
+                
+        </tr>
+		  <tr>
                 <td>
+                <label for='class'>Class (domestic or international):</label>
+                <input type = "text" name = 'class' size = "30" />
+                </td>
+               
+			   <td>
                 <p><input type="submit" value="Update" name="Update"/></p>
                 </td>
         </tr>
@@ -117,5 +126,3 @@ window.onload=function(){alert("Error adding flight, please try again.");}
 </div>
 </section>
 </html>
-
-

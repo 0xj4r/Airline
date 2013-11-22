@@ -21,6 +21,7 @@ function Change()
 		$newSeats = $_POST['SeatsAvailable'];
 		$newPrice = $_POST['price'];
 		$newLogo = $_POST['Logo'];
+		$newClass=$_POST['class'];
 		if($newDCity != NULL && gettype($newDCity) == 'string')
 			$mysql = $mysql . " depart_city = '" .$newDCity. "', ";
 		if($newDState !=NULL && gettype($newDCity) == 'string')
@@ -45,6 +46,8 @@ function Change()
 			$mysql = $mysql . "price = '" .$newPrice."', ";
 		if($newLogo !=NULL && gettype($newLogo) == 'string')
 		$mysql = $mysql . "logo = '" .$newLogo."', ";
+		if($newClass !=NULL && gettype($newClass) == 'string')
+		$mysql = $mysql . "international = '" .$newClass."', ";
 		$mysql = substr($mysql, 0, -2);
 		$mysql = $mysql . " WHERE flight_num = ". $FlightNumber;
 		$query = mysqli_query($dbCon, $mysql);
@@ -140,7 +143,15 @@ function Change()
 		<td>
 		<label for='Logo'>Airline Logo:</label>
 		<input type="text" name="Logo" size="150" />
+		
+		
+	</tr>
+	<tr>
+		<td>
+		<label for='price'>Class(domestic or international):</label>
+		<input type = "text" name = 'class' size = "30" />
 		</td>
+		
 		<td>
 		<p><input type="submit" value="Change" name="Change" /></p>
 		</td>
