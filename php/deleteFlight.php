@@ -6,7 +6,7 @@ if(isset($_POST['Delete'])){
 function Delete()
 {
 	
-	$FlightNumber=$_POST['FlightNumber'];
+	$FlightNumber=intval($_POST['FlightNumber']);
 	if($FlightNumber >= 1 && gettype($FlightNumber) == 'integer') {
 		include("dbconnect.php");	//Connects to database
 		$mysql="DELETE FROM flights WHERE flight_num =" .$FlightNumber;

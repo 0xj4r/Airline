@@ -42,6 +42,8 @@ $arrivalCity=$_SESSION['arrival_city'];
 $arrivalState=$_SESSION['arrival_st'];
 $flightDuration=$_SESSION['flight_duration'];
 $logo=$_SESSION['logo'];
+$class=$_SESSION['class'];
+$price=$_SESSION['price'];
 
 
 
@@ -58,37 +60,15 @@ $pdf->addText(150, 600, 14, $departTime, 0, 'left', 0);
 $pdf->addText(10, 575, 16, "<b>Flight Duration:<b>", 0, 'left', 0);
 $pdf->addText(150, 575, 14, $flightDuration, 'left', 0);
 $pdf->addText(10, 550, 16, "<b>Total Price:<b>", 0, 'left', 0);
-$pdf->addText(150, 550, 14, "need to update price", 0, 'left', 0);
+$pdf->addText(150, 550, 14, $price, 0, 'left', 0);
 $pdf->addText(10, 525, 16, "<b>Flight Number:<b>", 0, 'left', 0);
 $pdf->addText(150, 525, 14, $flightNum, 0, 'left', 0);
 $pdf->addText(10, 500, 16, "<b>Class:<b>", 0, 'left', 0);
-$pdf->addText(150, 500, 14, "need to update class", 0, 'left', 0);
+$pdf->addText(150, 500, 14, $class, 0, 'left', 0);
 
 
 
-//$pdf->ezText("Flight Number:");
-//$pdf->ezText($flightNum);
 
-//$pdf->ezText("Departure City:");
-//$pdf->ezText($departCity);
-
-/*$pdf->ezText("Departure State:");
-$pdf->ezText($departState);
-
-$pdf->ezText("Departure Time:");
-$pdf->ezText($departTime);
-
-$pdf->ezText("Arrival City:");
-$pdf->ezText($arrivalCity);
-
-$pdf->ezText("Arrival State:");
-$pdf->ezText($arrivalState);
-
-$pdf->ezText("Flight Duration:");
-$pdf->ezText($flightDuration);
-
-
-*/
 
 
 
