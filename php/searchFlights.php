@@ -10,26 +10,39 @@ session_start();
 		header("Location: internationalFlights.php");
 	}
 
+	if(isset($_POST['flightNum1'])) {
+		$_SESSION['flight_num'] = $_POST['flightNum1']; 
+		$_SESSION['class'] = 'First Class'; 
+		$_SESSION['price'] = $_POST['flightCost1'];
+		getflight(); 
+	}
 	if(isset($_POST['flightNum'])) {
+		$_SESSION['flight_num'] = $_POST['flightNum']; 
+		$_SESSION['class'] = 'Coach'; 
+		 $_SESSION['price'] = $_POST['flightCost'];
+		getflight(); 
+	}
+
+	function getflight() {
 
 	
 	 
 //Set the posted flight number into local variable
-	$flightNum = $_POST['flightNum']; 
+	
 	// include("dbconnect.php");	//Set the posted flight number into local variable 
-	include("dbconnect.php"); 
-	$con1 = $dbCon; 
-	
+$con1 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
+	 
+	$flightNum= $_SESSION['flight_num'];
 
-	$flightNum = strip_tags($_POST['flightNum']);
-	$flightNum = mysqli_real_escape_string($con1, $flightNum);
+	// $flightNum = strip_tags($flightNum);
+	// $flightNum = mysqli_real_escape_string($con1, $flightNum);
 	
-	$_SESSION['flight_num']=$flightNum;
+	// $_SESSION['flight_num']=$flightNum;
 	
 	$userid=$_SESSION['id'];
 	
 
-	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration, logo, coach_price, fc_price, international FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
+	$mysql = "SELECT depart_city, depart_st, depart_time, arrival_city, arrival_st, flight_duration, coach_price,  international FROM flights WHERE flight_num = '$flightNum' LIMIT 1";
 	$result4 = mysqli_query($con1, $mysql);
 	$row = mysqli_fetch_row($result4);
 
@@ -40,11 +53,10 @@ session_start();
 	$dbDepartTime = $row[2];
     $dbArrivalCity = $row[3]; 
 	$dbArrivalSt= $row[4]; 
-
 	$dbFlightDuration=$row[5];
 	$dbLogo=$row[6];
-	$dbPrice=$row[7];
-	$dbClass=$row[8];
+	// $dbPrice=$row[6];
+	// $dbClass=$row[8];
 	
 	$_SESSION['depart_city']=$dbDepartCity;
 	$_SESSION['depart_st']=$dbDepartSt;
@@ -53,8 +65,8 @@ session_start();
 	$_SESSION['arrival_st']=$dbArrivalSt;
 	$_SESSION['flight_duration']=$dbFlightDuration;
 	$_SESSION['logo']=$dbLogo;
-	$_SESSION['price']=$dbPrice;
-	$_SESSION['class']=$dbClass;
+	// $_SESSION['price']=$dbPrice;
+	// $_SESSION['class']=$dbClass;
 	//set flight_booked in members database to flight number booked
 	mysqli_query($con1,"UPDATE members SET flight_booked='$flightNum' WHERE user_id='$userid'")
 	or die(mysql_error());
@@ -121,9 +133,9 @@ function SearchFlights() {
 	  echo "<td>" . $row['arrival_city'] . ", " . $row['arrival_st'] . "</td>";
 	  echo "<td>" . $row['arrival_time'] . "</td>";
 	  
-	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'> $".$row['fc_price']." "; 
+	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightCost1' value='" . $row['fc_price'] . "'><input type='hidden' name ='flightNum1' value='" . $row['flight_num'] . "'> $".$row['fc_price']." "; 
 	  			 if(isset($_SESSION['id'])){ echo   "  <button class='btn btn-success' type='submit' >Get Ticket</button></form></td>";}
-	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'>
+	  echo "<td><form method='post' action='searchFlights.php'><input type='hidden' name ='flightCost' value='" . $row['coach_price'] . "'><input type='hidden' name ='flightNum' value='" . $row['flight_num'] . "'>
 	  			$".$row['coach_price']."  ";  
 	  			if(isset($_SESSION['id'])){ echo "  <button class='btn btn-success' type='submit' >Get Ticket</button></form></td>";} 
 
