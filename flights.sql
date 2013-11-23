@@ -51,11 +51,10 @@ CREATE TABLE IF NOT EXISTS `flights` (
 -- Dumping data for table `flights`
 --
 
-<<<<<<< HEAD
-INSERT INTO `flights` (`flight_num`, `depart_city`, `depart_st`, `depart_country`, `depart_airport`, `depart_time`, `arrival_city`, `arrival_st`, `arrival_country`, `arrival_airport`, `arrival_time`, `flight_duration`, `coach_seats`, `fc_seats`, `coach_price`, `fc_price`, `international`) VALUES
-=======
-INSERT INTO `flights` (`flight_num`, `depart_city`, `depart_st`, `depart_country`, `depart_airport`, `depart_time`, `arrival_city`, `arrival_st`, `arrival_country`, `arrival_airport`, `arrival_time`, `flight_duration`, `bus_seats`, `fc_seats`, `bus_price`, `fc_price`, `international`) VALUES
->>>>>>> 818bdfb50bf49110ad619b8cbbbb84ce2caceda6
+
+
+INSERT INTO `flights` (`flight_num`, `depart_city`, `depart_st`, `depart_country`, `depart_airport`, `depart_time`, `arrival_city`, `arrival_st`, `arrival_country`, `arrival_airport`, `arrival_time`, `flight_duration`, `bus_seats`, `fc_seats`, `coach_price`, `fc_price`, `international`) VALUES
+
 (1, 'Phoenix', 'AZ', '', '', '00:00:00', '', '', '', '', '00:00:00', '00:00:00', 0, 15, 225, 400, '0'),
 (2, 'Scottsdale', 'AZ', '', 'Scottsdale Airport', '06:45:00', '', '', '', '', '00:00:00', '00:00:00', 0, 15, 225, 400, '0'),
 (3, 'Phoenix', 'AZ', '', 'Sky Harbor', '12:00:00', 'Chicago', 'IL', '', 'O''Hare Intl.', '13:30:00', '02:30:00', 14, 15, 225, 400, '0');
