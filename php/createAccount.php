@@ -1,11 +1,17 @@
 <?php
 session_start();
-if(isset($_POST['Submit'])){
-	RegisterUser();
-	}
-function RegisterUser()
-{
-	include_once("dbconnect.php");
+ if(isset($_POST['Submit'])){
+ 	// echo "Submitted";
+// 	RegisterUser();
+// 	$db_host = $_ENV['OPENSHIFT_MYSQL_DB_HOST'];
+// $db_user = $_ENV['OPENSHIFT_MYSQL_DB_USERNAME'];
+// $db_pass = $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD'];
+// $db_name = $_ENV['OPENSHIFT_APP_NAME'];
+// function RegisterUser()
+// {
+	// $dbCon = mysqli_connect($_ENV['OPENSHIFT_MYSQL_DB_HOST'], $_ENV['OPENSHIFT_MYSQL_DB_USERNAME'],  $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD'], $_ENV['OPENSHIFT_APP_NAME'], $_ENV['OPENSHIFT_MYSQL_DB_PORT']);
+	include("dbconnect.php");
+	// $con1 = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
 	$email = strip_tags($_POST['email']);
 	$email = mysqli_real_escape_string($dbCon, $email);
 	$pword = strip_tags($_POST['password']);
@@ -15,21 +21,21 @@ function RegisterUser()
 	$fname = mysqli_real_escape_string($dbCon, $fname);
 	$lname = strip_tags($_POST['lastname']);
 	$lname = mysqli_real_escape_string($dbCon, $lname);
-	$prequery = "SELECT user_id FROM members WHERE username = '$email' LIMIT 1";
-	$query = "INSERT INTO `members`(`username`, `password`, `firstname`, `lastname`, `adminRights`) VALUES ('".$email."','".$pword."','".$fname."','".$lname."','0')";
-	$preresult = mysqli_query($dbCon, $prequery);
-	$row = mysqli_fetch_row($preresult);
-	$uid = $row[0];
-	if($uid == NULL) {
-		$result = mysqli_query($dbCon, $query);
-		echo $result;
-		if($result) {
-		header('Location: index.php');
-		}
+	// $prequery = mysqli_query($dbCon, "SELECT user_id FROM members WHERE username = '$email' LIMIT 1")or die(mysqli_error());
+ 	 
+	
+	if(mysqli_num_rows($prequery)>0) {
+		die("That email is already registered.");		
 	}
 	else {
-	die("That email is already registered.");
-	}
+			
+		mysqli_query($dbCon, "INSERT INTO members (username, password, firstname, lastname, admin_rights) VALUES ('".$email."','".$pword."','".$fname."','".$lname."', '0')")or die("cannot connect"); 
+			header('Location: index.php'); 
+			exit();
+		}
+	
+		
+	mysqli_close($dbCon);
 }
 ?>
 <!DOCTYPE HTML>
@@ -62,9 +68,8 @@ function RegisterUser()
 <label for='password' >Password*:</label>
 <input type='password' name='password' id='password' maxlength="255" />
 
-<p class = "submit">
-<input type='submit' name='Submit' value='Register' />
- </p>
+<input type="Submit" name='Submit' class="Submit" value="Submit">
+  				
  </div>
 </fieldset>
 </form>
