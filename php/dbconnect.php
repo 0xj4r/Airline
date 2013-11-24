@@ -1,6 +1,19 @@
 <?php
-$dbCon = mysqli_connect("localhost", "root", "root", "snagaflight") or die("cannot connect");
-//Parameters: server, username (default is root in XAMPP), password (XAMPP doesn't set), database name
+$db_host = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$db_user = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$db_pass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$db_name = getenv('OPENSHIFT_APP_NAME');
+$db_port = getenv('OPENSHIFT_MYSQL_DB_PORT');
+ 
+$dbCon = mysqli_connect($db_host, $db_user, $db_pass, $db_name, $db_port);
+
+if ($dbCon->connect_errno) {
+    die('Connect Error (' . $dbCon->connect_errno . ') '
+            . $dbCon->connect_error);
+}
+ 
+$dbCon->set_charset("utf8");
+
 ?>
 
 <!--?php
