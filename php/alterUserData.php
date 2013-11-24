@@ -15,7 +15,7 @@ if(isset($_POST['Delete'])) {
 	}
 
 function updateNames() {
-	include_once('dbConnect.php');
+	include_once('dbconnect.php');
 	$uName = $_SESSION['username'];
 	$newFName = strip_tags($_POST['newFName']);
 	$newFName = mysqli_real_escape_string($dbCon, $newFName);
@@ -27,7 +27,7 @@ function updateNames() {
 }
 
 function changePWord() {
-	include_once('dbConnect.php');
+	include_once('dbconnect.php');
 	$uName = $_SESSION['username'];
 	$oldpaswd = strip_tags($_POST['oldPword']);
 	$oldpaswd = mysqli_real_escape_string($dbCon, $oldpaswd);
@@ -41,7 +41,7 @@ function changePWord() {
 }
 
 function deleteUser() {
-	include_once('dbConnect.php');
+	include_once('dbconnect.php');
 	$uName = $_SESSION['username'];
 	$sql = "DELETE FROM members WHERE username = '".$uName."'";
 	$query = mysqli_query($dbCon, $sql);
