@@ -35,22 +35,26 @@ require_once("menu.html");
 	<div id ="showAccountInfoText" onclick = "Javascript: toggle_visibility('showAccountInfo', 'showAccountInfoText', 'Click to view your account information')">Click to view your account information</div>
 	<section class = "container1">
 	<div id = "showAccountInfo" style = "display: none">
-		<?php echo $result; 
+		<?php
+			session_start(); 
+			echo $result; 
 			$us_id = $_SESSION['id'];
-			include_once('dbConnect.php');
-			$sql = "SELECT flight_booked, firstname, lastname FROM members WHERE user_id = '" .$us_id."'";
+			include('dbconnect.php');
+			$sql = "SELECT flight_booked, firstname, lastname FROM members WHERE user_id = '$us_id' LIMIT 1";
 			$query = mysqli_query($dbCon, $sql);
-			$row = mysqli_fetch_row($query);
-			$flight_num = $row[0];
-			$firstname = $row[1];
-			$lastname = $row[2];
-			if($flight_num > 0) {
-			$sqlFlight = "SELECT depart_city, depart_st, depart_airport, depart_time, arrival_city, arrival_st, arrival_airport, arrival_time, flight_duration, price FROM flights WHERE flight_num = '" .$flight_num. "'";
+			$row2 = mysqli_fetch_array($query, MYSQLI_ASSOC);
+			$flight_num = $row2["flight_booked"];
+			$firstname = $row2["firstname"];
+			$lastname = $row2["lastname"];
+			
+ 
+			if($flight_num) {
+			$sqlFlight = "SELECT depart_city, depart_st, depart_airport, depart_time, arrival_city, arrival_st, arrival_airport, arrival_time, flight_duration, fc_price FROM flights WHERE flight_num = '$flight_num'";
 			$flightquery = mysqli_query($dbCon, $sqlFlight);
-			$Frow = mysqli_fetch_row($flightquery);
-			$message = "<p>You've been booked to fly from " .$Frow[0]. ", " .$Frow[1]." at " .$Frow[2]. " airport at " .$Frow[3].".<br />
-			You will arrive at " .$Frow[4].", ".$Frow[5]." at " .$Frow[6]." airport at " .$Frow[7].", which will take " .$Frow[8]." hours.<br /> 
-			You have already been charged $" .$Frow[9]. "<br />Have a safe trip!</p>";
+			$Frow = mysqli_fetch_array($flightquery, MYSQLI_ASSOC);
+			$message = "<p>You've been booked to fly from " .$Frow["depart_city"]. ", " .$Frow["depart_st"]." at " .$Frow["depart_airport"]. " airport at " .$Frow["depart_time"].".<br />
+			You will arrive at " .$Frow["arrival_city"].", ".$Frow["arrival_st"]." at " .$Frow["arrival_airport"]." airport at " .$Frow["arrival_time"].", which will take " .$Frow["flight_duration"]." hours.<br /> 
+			You have already been charged $" .$Frow["fc_price"]. "<br />Have a safe trip!</p>";
 			}
 			else {
 				$message = "<p>Oops! Looks like you haven't booked a flight. Why not see where we can take you?</p>";
