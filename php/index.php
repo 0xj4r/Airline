@@ -14,10 +14,6 @@
 		}
 	?>
 
-<!-------------------------------------
-		RSS FEED ON TRAVEL NEWS. 
-		Source: http://www.script-tutorials.com/import-rss-feeds-using-jfeed-jquery/ 
-						--------------------------------------------->
 <script language="javascript" type="text/javascript" src="Javascript/jquery-1.4.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="Javascript/jquery.jfeed.js"></script>
 <script language="javascript" type="text/javascript" src="Javascript/jquery.aRSSFeed.js"></script>
@@ -28,11 +24,10 @@
         <img alt="Loading..." src="./images/loading.gif" />
     </div>
 </div>
-<script language="javascript" type="text/javascript">
+ <script language="javascript" type="text/javascript">
 	$(document).ready( function() {
 		$('div.RSSAggrCont').aRSSFeed();
 	} );
 </script>
-<!-- END RSS FEED PORTION -->
 </body>
 </html>
