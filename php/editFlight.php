@@ -11,21 +11,29 @@ function Change()
 		$mysql="UPDATE flights SET   ";
 		$newDCity = $_POST['DepartCity'];
 		$newDState = $_POST['DepartState'];
+		$newDCountry = $_POST['DepartCountry'];
 		$newDAirport = $_POST['DepartAirport'];
 		$newDTime = $_POST['DepartTime'];
 		$newACity = $_POST['ArrivalCity'];
 		$newAState = $_POST['ArrivalState'];
+		$newACountry = $_POST['ArrivalCountry'];
 		$newAAirport = $_POST['ArrivalAirport'];
 		$newATime = $_POST['ArrivalTime'];
 		$newDuration = $_POST['FlightDuration'];
-		$newSeats = $_POST['SeatsAvailable'];
-		$newPrice = $_POST['price'];
+		$newCoachSeats = $_POST['CoachSeatsAvailable'];
+		$newFCSeats = $_POST['FCSeatsAvailable'];
+
+		$newFCPrice = $_POST['fc_price'];
+		$newCoachPrice = $_POST['coach_price'];
 		$newLogo = $_POST['Logo'];
 		$newClass=$_POST['class'];
+
 		if($newDCity != NULL && gettype($newDCity) == 'string')
 			$mysql = $mysql . " depart_city = '" .$newDCity. "', ";
 		if($newDState !=NULL && gettype($newDCity) == 'string')
 			$mysql = $mysql . " depart_st = '" .$newDState."', ";
+		if($newDCountry !=NULL && gettype($newDCountry) == 'string')
+			$mysql = $mysql . " depart_country = '" .$newDCountry."', ";
 		if($newDAirport != NULL && gettype($newDAirport) == 'string')
 			$mysql = $mysql . " depart_airport = '" .$newDAirport."', ";
 		if($newDTime !=NULL)
@@ -34,16 +42,23 @@ function Change()
 			$mysql = $mysql . "arrival_city = '" .$newACity."', ";
 		if($newAState !=NULL && gettype($newAState) == 'string')
 			$mysql = $mysql . "arrival_st = '" .$newAState."', ";
+		if($newACountry !=NULL && gettype($newACountry) == 'string')
+			$mysql = $mysql . " arrival_country = '" .$newACountry."', ";
 		if($newAAirport !=NULL && gettype($newAAirport) == 'string')
 			$mysql = $mysql . "arrival_airport = '" .$newAAirport."', ";
 		if($newATime !=NULL)
 			$mysql = $mysql . "arrival_time = '" .$newATime."', ";
 		if($newDuration !=NULL)
 			$mysql = $mysql . "flight_duration = '" .$newDuration."', ";
-		if($newSeats !=NULL && gettype($newAState) == 'integer')
-			$mysql = $mysql . "flight_seats_available = '" .$newSeats."', ";
-		if($newPrice !=NULL)
-			$mysql = $mysql . "price = '" .$newPrice."', ";
+		if($newCoachSeats !=NULL && gettype($newCoachSeats) == 'integer')
+			$mysql = $mysql . "coach_seats = '" .$newCoachSeats."', ";
+		if($newFCSeats !=NULL && gettype($newFCSeats) == 'integer')
+			$mysql = $mysql . "fc_seats = '" .$newFCSeats."', ";
+		if($newCoachPrice !=NULL && gettype($newCoachPrice) == 'integer')
+			$mysql = $mysql . "coach_price = '" .$newCoachPrice."', ";
+		if($newFCPrice !=NULL && gettype($newFCPrice) == 'integer')
+			$mysql = $mysql . "fc_price = '" .$newFCPrice."', ";
+
 		  $logoCheck=@getimagesize($newLogo);
 			
 		if($newLogo !=NULL && gettype($newLogo) == 'string' && preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$newLogo))
@@ -86,6 +101,9 @@ function Change()
 		<label for='FlightNum'>Enter Number for the Flight to Alter:</label>
 		<input type="text" name="FlightNum" size="30" />
 		</td>
+		<td>
+		<p><input type="submit" value="Change" name="Change" /></p>
+		</td>
 	</tr>
 	<tr>
 		<td>
@@ -105,6 +123,16 @@ function Change()
 		<td>
 		<label for='ArrivalState'>Arrival State:</label>
 		<input type="text" name="ArrivalState" size="30" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<label for='DepartState'>Departure Country:</label>
+		<input type="text" name="DepartCountry" size="30" />
+		</td>
+		<td>
+		<label for='ArrivalState'>Arrival Country:</label>
+		<input type="text" name="ArrivalCountry" size="30" />
 		</td>
 	</tr>
 	<tr>
@@ -133,29 +161,34 @@ function Change()
 		<input type="text" name="FlightDuration" size="30" />
 		</td>
 		<td>
-		<label for='SeatsAvailable'>Seats Available:</label>
-		<input type="text" name="SeatsAvailable" size="30" />
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<label for='price'>Ticket Price:</label>
-		<input type = "text" name = 'price' size = "30" />
-		</td>
-		<td>
-		<label for='Logo'>Airline Logo:</label>
-		<input type="text" name="Logo" size="150" />
-		
-		
-	</tr>
-	<tr>
-		<td>
 		<label for='price'>Class(domestic or international):</label>
 		<input type = "text" name = 'class' size = "30" />
 		</td>
-		
+	</tr>
+	<tr>
 		<td>
-		<p><input type="submit" value="Change" name="Change" /></p>
+		<label for='price'>First Class Ticket Price:</label>
+		<input type = "text" name = 'fc_price' size = "30" />
+		</td>
+	<td>
+		<label for='price'>Coach Ticket Price:</label>
+		<input type = "text" name = 'coach_price' size = "30" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<label for='CoachSeatsAvailable'> Coach Seats Available:</label>
+		<input type="text" name="CoachSeatsAvailable" size="30" />
+		</td>
+		<td>
+		<label for='FCSeatsAvailable'>First Class Seats Available:</label>
+		<input type="text" name="FCSeatsAvailable" size="30" />
+		</td>
+	</tr>
+	<tr>
+			<td>
+		<label for='Logo'>Airline Logo:</label>
+		<input type="text" name="Logo" size="150" />
 		</td>
 	</tr>
 	</table>		
