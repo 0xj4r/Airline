@@ -19,7 +19,7 @@ session_start();
 	
 	$paswd = md5($paswd); //hashing algorithm
 	
-	$sql = "SELECT username, password, adminRights, user_id, firstname FROM members WHERE username = '$usname' LIMIT 1";
+	$sql = "SELECT username, password, admin_rights, user_id, firstname FROM members WHERE username = '$usname' LIMIT 1";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$dbUsname = $row[0];
