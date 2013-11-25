@@ -11,7 +11,7 @@ function Delete()
 		include("dbconnect.php");	//Connects to database
 		$mysql="DELETE FROM flights WHERE flight_num =" .$FlightNumber;
 		$query = mysqli_query($dbCon, $mysql);
-		if($query) {
+		if($query) { //Successful deletion
 			echo '<script type="text/javascript"> 
 				window.onload=function(){alert("Flight deleted successfully.");} 
 				</script>'; 
