@@ -13,7 +13,7 @@ if(isset($_POST['Change'])) {
 if(isset($_POST['Delete'])) {
 	deleteUser();
 	}
-
+//Updates the name of the user
 function updateNames() {
 	include_once('dbconnect.php');
 	$uName = $_SESSION['username'];
@@ -25,13 +25,13 @@ function updateNames() {
 	$query = mysqli_query($dbCon, $sql);
 	return $query;
 }
-
+//Updates the password for the user
 function changePWord() {
 	include_once('dbconnect.php');
 	$uName = $_SESSION['username'];
-	$oldpaswd = strip_tags($_POST['oldPword']);
-	$oldpaswd = mysqli_real_escape_string($dbCon, $oldpaswd);
-	$oldpaswd = md5($oldpaswd);
+	//$oldpaswd = strip_tags($_POST['oldPword']);
+	//$oldpaswd = mysqli_real_escape_string($dbCon, $oldpaswd);
+	//$oldpaswd = md5($oldpaswd);
 	$paswd = strip_tags($_POST['newPword']);
 	$paswd = mysqli_real_escape_string($dbCon, $paswd);
 	$paswd = md5($paswd);
@@ -39,7 +39,7 @@ function changePWord() {
 	$query = mysqli_query($dbCon, $sql);
 	return $query;
 }
-
+//Deletes the user from the table
 function deleteUser() {
 	include_once('dbconnect.php');
 	$uName = $_SESSION['username'];
