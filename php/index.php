@@ -8,8 +8,8 @@
 <body>
 <?php
 	session_start();
-	require_once("menu.html");
-	if(!isset($_SESSION['id'])) {
+	require_once("menu.html"); //Include menu 
+	if(!isset($_SESSION['id'])) { //If not logged in, show log-in box
 		require_once("loginBox.html");
 		}
 	?>
