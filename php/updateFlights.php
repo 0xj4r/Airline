@@ -5,6 +5,7 @@ if(isset($_POST['Update'])){
         
 function Update()
 {
+	//checks if the url entered for logo is a valid url
 	$logo = test_input($_POST['logo']);
 if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$logo))
   {
@@ -31,6 +32,7 @@ if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-
   //       $Price = $_POST['price'];
 		// $Class = $_POST['class1'];
         include("dbconnect.php");        //Connects to database
+		//set variables to the admin's input
         $DCity = $_POST['DepartCity'];
         $DState = $_POST['DepartState'];
         $DCountry = $_POST['DepartCountry'];
@@ -51,6 +53,7 @@ if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-
         $International = $_POST['international'];
 
 
+		// adds the flight info into the database, creating a new flight
         $mysql="INSERT INTO flights (depart_city, depart_st, depart_country, depart_airport, depart_time, 
                 arrival_city, arrival_st, arrival_country, arrival_airport, arrival_time, flight_duration, coach_seats, fc_seats, coach_price, fc_price, logo, international )
                 VALUES ('".$DCity."', '".$DState."', '".$DCountry."', '".$DAirport."', '".$DTime."', '".$ACity."', '".$AState."', '".$ACountry."',
@@ -81,7 +84,8 @@ window.onload=function(){alert("Error adding flight, please try again.");}
 <div class = "contents">
     <fieldset>
     <h1>Add a New Flight</h1>
-    <!-- Add flight form for admin -->        
+    <!-- Add flight form for admin -->   
+	<!-- Input fields for admin to add flight information-->
     <form id='flightForm' method='post' accept-charset='UTF-8'>
     <table>
     <tr>
@@ -170,6 +174,7 @@ window.onload=function(){alert("Error adding flight, please try again.");}
         <input type="text" name="Logo" size="150" />
         </td>
 		 <td>
+		 <!--submit button adds the flight to the database-->
           <p><input type="submit" value="Update" name="Update"/></p>
          </td>
         </tr>

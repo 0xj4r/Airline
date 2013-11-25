@@ -5,11 +5,11 @@ session_start();
 
 	 
 	 //require_once("menu.html");
-		
+	// switch to internationalFlights page if button is clicked
 	if(isset($_POST['internationalflights'])){
 		header("Location: internationalFlights.php");
 	}
-
+	//
 	if(isset($_POST['flightNum1'])) {
 		$_SESSION['flight_num'] = $_POST['flightNum1']; 
 		$_SESSION['class'] = 'First Class'; 
@@ -88,6 +88,7 @@ session_start();
 function SearchFlights() {	
 	include("dbconnect.php"); 
 
+	//set depart_city and arrival_city to what the cities the customer chose
 	$depart_city = strip_tags($_POST['depart_city']);
 	$depart_city = mysqli_real_escape_string($dbCon, $depart_city);
 	// $depart_st = strip_tags($_POST['depart_st']);
@@ -97,6 +98,7 @@ function SearchFlights() {
 	// $arrival_st = strip_tags($_POST['arrival_st']);
 	// $arrival_st = mysqli_real_escape_string($dbCon, $arrival_st);
 
+	//select all flights from database that have the same depart_city and arrival_city as what the user chose
 	$query = "SELECT * FROM flights WHERE depart_city='$depart_city'
 		  and arrival_city = '$arrival_city' ";
 	$flights = mysqli_query($dbCon, $query) or die (mysqli_error());  
@@ -108,6 +110,7 @@ function SearchFlights() {
 	// echo "failure";
 	// die(mysqli_error($dbCon));
 	// }
+	//table printing out available flights
 		echo "<table class='table table-striped' id='flightstable' >
 		<thead>
 	<tr>

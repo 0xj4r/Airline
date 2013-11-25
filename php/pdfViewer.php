@@ -2,6 +2,8 @@
 session_start();
 
 error_reporting(E_ALL);
+
+//restarts the timeout counter to zero, will set it for 1800 seconds
 set_time_limit(1800);
 set_include_path('../src/' . PATH_SEPARATOR . get_include_path());
 
@@ -9,6 +11,7 @@ include 'Cezpdf.php';
 
 class Creport extends Cezpdf{
 	function Creport($p,$o){
+		//method _construct starts a new pdf
   		$this->__construct($p, $o,'color',array(0.8,0.8,0.8));
 
 	}
@@ -19,6 +22,7 @@ if(strpos(PHP_OS, 'WIN') !== false){
     $pdf->tempPath = '/Volumes/HDD/Users/joshRansom/workspaces/website/Airline/Airline';
 }
 
+//set margins of pdf
 $pdf -> ezSetMargins(20,20,20,20);
 
 $mainFont = '../src/fonts/Times-Roman.afm';
@@ -28,12 +32,13 @@ $size=16;
 
 $height = $pdf->getFontHeight($size);
 // modified to use the local file if it can
+//specifies where document should first open
 $pdf->openHere('Fit');
 
 
 
 
-//$flightNum="hello";
+//get flight information from session variables
 $flightNum=$_SESSION['flight_num'];
 $departCity= $_SESSION['depart_city'];
 $departState=$_SESSION['depart_st'];
@@ -51,7 +56,7 @@ $class=$_SESSION['class'];
 $price=$_SESSION['price'];
 
 
-
+//write text to the pdf
 $pdf->addText(300, 800, 24, "<b>Airline Ticket<b>", 0, 'center', 0);
 
 $pdf->ezImage($logo, 30, 100, 'width','center');
@@ -75,13 +80,7 @@ $pdf->addText(150, 475, 14, $class, 0, 'left', 0);
 
 
 
-
-
-
-
-
-
-
+//if there is an error, ouput the pdf stream as a string
 if (isset($_GET['d']) && $_GET['d']){
   $pdfcode = $pdf->ezOutput(1);
   $pdfcode = str_replace("\n","\n<br>",htmlspecialchars($pdfcode));
@@ -89,6 +88,7 @@ if (isset($_GET['d']) && $_GET['d']){
   echo trim($pdfcode);
   echo '</body></html>';
 } else {
+//else output the pdf code, streaming it to the browser
   $pdf->ezStream(array('compress'=>0));
 }
 
