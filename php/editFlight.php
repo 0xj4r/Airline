@@ -8,6 +8,7 @@ function Change()
 	$FlightNumber=intval($_POST['FlightNum']);
 	if($FlightNumber >= 1 && gettype($FlightNumber) == 'integer') {
 		include("dbconnect.php");	//Connects to database
+		//Get information from admin form
 		$mysql="UPDATE flights SET   ";
 		$newDCity = $_POST['DepartCity'];
 		$newDState = $_POST['DepartState'];
@@ -27,7 +28,7 @@ function Change()
 		$newCoachPrice = $_POST['coach_price'];
 		$newLogo = $_POST['Logo'];
 		$newClass=$_POST['class'];
-
+		//Set up query based on provided information 
 		if($newDCity != NULL && gettype($newDCity) == 'string')
 			$mysql = $mysql . " depart_city = '" .$newDCity. "', ";
 		if($newDState !=NULL && gettype($newDCity) == 'string')
@@ -98,6 +99,7 @@ function Change()
 	<form id='flightFormEdit' method='post'>
 	<tr>
 		<td>
+		<!-- Editing flight form for admin -->
 		<label for='FlightNum'>Enter Number for the Flight to Alter:</label>
 		<input type="text" name="FlightNum" size="30" />
 		</td>
