@@ -50,7 +50,7 @@ session_start();
 	require_once("menu.html");
 	?>
 	</section>
-
+<!-- Registration Form -->
 <section class = "container">
 <div class = "register">
 <form id='regForm' action='createAccount.php' method='post'
@@ -74,6 +74,7 @@ session_start();
 </fieldset>
 </form>
 </section>
+<!-- Message to encourage registration -->
 <section class = "description">
 <p class ="message">Welcome aboard and thank you for choosing SnagaFlight! 
 Before you discover the adventures waiting for you, 
