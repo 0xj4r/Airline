@@ -81,7 +81,7 @@ window.onload=function(){alert("Error adding flight, please try again.");}
 <div class = "contents">
     <fieldset>
     <h1>Add a New Flight</h1>
-        
+    <!-- Add flight form for admin -->        
     <form id='flightForm' method='post' accept-charset='UTF-8'>
     <table>
     <tr>
