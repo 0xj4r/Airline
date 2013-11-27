@@ -1,4 +1,5 @@
 <?php
+//Credit to http://sourceforge.net/projects/pdf-php/?source=directory for pdf viewer open source
 session_start();
 
 error_reporting(E_ALL);
